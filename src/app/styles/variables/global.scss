@@ -1,0 +1,17 @@
+:root {
+    --index: calc(0.83vh + 0.87vw);
+
+    --font-family-main: 'Roboto', sans-serif;
+
+    // scroll size
+    --scroll-size: calc(var(--index) * 0.4);
+    --scroll-border-radius: calc(var(--index) * 0.2);
+
+    //font m
+    --font-size-m: calc(var(--index) * 0.85);
+    --font-m: 400 var(--font-size-m) / 1.15 var(--font-family-main); 
+  
+    // font l
+    --font-size-l: var(--index);
+    --font-l: 400 var(--font-size-l) / 1.15 var(--font-family-main); 
+}

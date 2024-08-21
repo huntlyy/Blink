@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom"
-import AppRouter from "./providers/provider/router/AppRouter"
+import AppRouter from "./router/AppRouter"
 import './styles/index.scss'
 import { Suspense } from "react"
+import { AppLink } from "shared/ui/AppLink/AppLink"
 
 export function App () {
-    return <div className='app'>
+    return <div className='app dark'>
         <Suspense fallback=''>
-        <Link to={'/'}>Главная</Link>
-        <Link to={'/about'}>О сайте</Link>
+        <AppLink to={'/'}>Главная</AppLink>
+        <AppLink to={'/about'}>О сайте</AppLink>
         <AppRouter />
         </Suspense>
     </div>

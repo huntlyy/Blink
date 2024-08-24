@@ -1,14 +1,12 @@
 {
-    "extends": "stylelint-config-standard-scss",
+    "extends": [
+      "stylelint-config-standard-scss",
+      "stylelint-config-recommended"
+    ],
     "plugins": ["stylelint-scss"],
     "rules": {
-        "indentation": 10,
-        "declaration-empty-line-before": null,
-        "selector-class-pattern": null,
-        "declaration-block-no-redundant-longhand-properties": null,
-        "no-descending-specificity": null,
-        "color-function-notation": null,
-        "keyframes-name-pattern": null,
-        "no-invalid-double-slash-comments": true
+      "scss/double-slash-comment-whitespace-inside": null,
+      "selector-class-pattern": null
     }
   }
+  

@@ -6,6 +6,9 @@ import { ThemeButton } from './Button';
 const meta = {
   title: 'shared/Button',
   component: Button,
+  argTypes: {
+    onClick: { action: 'clicked' },
+  },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
 

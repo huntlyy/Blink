@@ -26,5 +26,8 @@ export function buildWebpackConfig(
         },
         plugins: buildPlugins(options),
         devServer: isDev ? buildDevServer(options) : undefined,
+        stats: {
+            children: true
+        }
     };
 }

@@ -5,13 +5,13 @@ import { PageLoader } from "shared/ui/PageLoader/PageLoader";
 
 const AppRouter = () => {
     return (
-        <Suspense fallback={<PageLoader />}>
-            <Routes>
-                {Object.values(routeConfig).map(({ element, path }) => (
-                    <Route key={path} path={path} element={element} />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          {Object.values(routeConfig).map(({ element, path }) => (
+            <Route key={path} path={path} element={element} />
                 ))}
-            </Routes>
-        </Suspense>
+        </Routes>
+      </Suspense>
     );
 };
 

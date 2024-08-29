@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
-import * as cls from './Button.module.scss';
 import React from 'react';
+import * as cls from './Button.module.scss';
 
 export enum ThemeButton {
     CLEAR = 'clear',
@@ -23,12 +23,12 @@ export const Button = memo((props: ButtonProps) => {
     } = props;
 
     return (
-        <button
+      <button
             type="button"
             className={classNames(cls.Button, { [cls[theme]]: true }, [className])}
             {...otherProps}
         >
-            {children}
-        </button>
+        {children}
+      </button>
     );
 });

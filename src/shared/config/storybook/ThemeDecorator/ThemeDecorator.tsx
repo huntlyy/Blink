@@ -7,8 +7,8 @@ export const ThemeDecorator = (theme: Theme): Decorator => (Story) => {
     document.body.className = theme
     
     return (
-        <ThemeProvider initialTheme={theme}>
-            <Story />
-        </ThemeProvider>
+      <ThemeProvider initialTheme={theme}>
+        <Story />
+      </ThemeProvider>
     );
 };

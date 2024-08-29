@@ -1,6 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames"
-import * as cls from './NotFoundPage.module.scss'
 import { memo } from "react"
+import * as cls from './NotFoundPage.module.scss'
 
 export interface NotFoundPageProps {
     className?: string
@@ -11,7 +11,7 @@ const NotFoundPage = (props: NotFoundPageProps) => {
     const {className} = props
 
     return <div className={classNames(cls.NotFoundPage, {}, [className])}>
-        Страница не найдена
+      Страница не найдена
     </div>
 }
 

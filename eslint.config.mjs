@@ -37,14 +37,14 @@ export default [
         rules: {
             ...airbnbConfig.rules,
             // Отступы
-            'react/jsx-indent': [2, 4],
-            'react/jsx-indent-props': [2, 4],
+            'react/jsx-indent': [2, 2],
             indent: [2, 4],
             'react/jsx-filename-extension': [
                 2,
-                { extensions: ['.js', '.jsx', '.tsx'] },
+                { extensions: ['.js', '.jsx', '.tsx', '.ts'] },
             ],
             'import/no-unresolved': 'off',
+            'import/order': 'warn',
             'import/prefer-default-export': 'off',
             'no-unused-vars': 'off',
             'react/require-default-props': 'off',
@@ -55,7 +55,8 @@ export default [
             'import/extensions': 'off',
             'import/no-extraneous-dependencies': 'off',
             'no-underscore-dangle': 'off',
-            'max-len': ['error', { ignoreComments: true, code: 120 }],
+            'max-len': [2, { ignoreComments: true, code: 135 }],
+             eqeqeq: 'warn',
             'jsx_a11y/no-static-element-interactions': 'off',
             'jsx_a11y/click-events-have-key-events': 'off',
             'react_hooks/rules-of-hooks': 'error', // Checks rules of Hooks

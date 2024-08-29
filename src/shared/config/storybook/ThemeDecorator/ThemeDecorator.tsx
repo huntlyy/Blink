@@ -8,7 +8,7 @@ export const ThemeDecorator = (theme: Theme): Decorator => (Story) => {
     
     return (
         <ThemeProvider initialTheme={theme}>
-               <Story />
+            <Story />
         </ThemeProvider>
     );
 };

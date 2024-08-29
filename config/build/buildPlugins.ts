@@ -6,21 +6,24 @@ import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import { BuildOptions } from "./types/config";
 
 export function buildPlugins({
-    paths,
+    paths, isDev
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-    return [
+    const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
         new webpack.ProgressPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "css/[name].[contenthash:8].css",
             chunkFilename: "css/[name].[contenthash:8].css",
         }),
-        new BundleAnalyzerPlugin({
+    ]
+    if (isDev) {
+        plugins.push(new webpack.HotModuleReplacementPlugin()),
+        plugins.push(new BundleAnalyzerPlugin({
             openAnalyzer: false
-        })
-    ];
+        }))
+    }
+    return plugins
 }

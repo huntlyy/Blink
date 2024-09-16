@@ -13,7 +13,7 @@ const {theme}= useTheme()
   useEffect(() => {
     // set theme
     document.body.className = theme;
-  }, [])
+  }, [theme])
 
     return (
       <div className="app dark">

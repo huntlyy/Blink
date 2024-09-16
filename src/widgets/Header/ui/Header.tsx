@@ -1,8 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames'
-import cls from './Header.module.scss'
-import Burger from './Burger/Burger'
 import useToggler from 'shared/lib/hooks/useToggler'
 import { memo } from 'react'
+import cls from './Header.module.scss'
+import Burger from './Burger/Burger'
 import Menu from './Menu/Menu'
 
 
@@ -19,9 +19,9 @@ export const Header = memo((props: HeaderProps) => {
     const {className} = props
 
     return <header className={classNames(cls.Header, {}, [className])}> 
-    <div className={cls.row}>
-    <Burger isOpen={isOpen} onClick={isOpenToggler} className={cls.burger}/>
-    </div>
-    <Menu onClose={onCLoseMenu} isOpen={isOpen}/>
+      <div className={cls.row}>
+        <Burger isOpen={isOpen} onClick={isOpenToggler} className={cls.burger}/>
+      </div>
+      <Menu onClose={onCLoseMenu} isOpen={isOpen}/>
     </header>
 })

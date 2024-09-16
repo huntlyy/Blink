@@ -21,11 +21,8 @@ html,body{
     height: 100%;
 }
 
-body {
+.app {
    font: var(--font-l);
-
-   .app {
     background: var(--bg-color);
-    color: var(--text-color);
-   }
+    color: var(--text-color);  
 }

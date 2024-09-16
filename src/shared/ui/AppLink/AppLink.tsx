@@ -2,7 +2,7 @@ import { Mods, classNames } from "shared/lib/classNames/classNames";
 import { ReactNode, memo } from "react";
 import { LinkProps } from "react-router-dom";
 import { Link } from "react-router-dom";
-import * as cls from "./AppLink.module.scss";
+import  cls from "./AppLink.module.scss";
 
 export enum AppLinkTheme {
   CLASSIC = "classic",

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import {Button, ThemeButton } from 'shared/ui/Button/Button';
+import { ThemeButton, Button } from 'shared/ui/Button/Button';
 import cls from './Burger.module.scss';
 
 interface BurgerProps {

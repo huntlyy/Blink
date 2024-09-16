@@ -1,4 +1,3 @@
-import test from "node:test";
 import webpack from "webpack";
 import { BuildOptions } from "./types/config";
 import { buildCssLoader } from "./loaders/buildCssLoader";
@@ -21,7 +20,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const babelLoader = buildBabelLoader(options)
 
     const fileLoader = {
-        test: /\.png|jpe?g|gif|woff|woff2$/i,
+        test: /\.(png|jpe?g|gif|woff|woff2)$/i,
         use: [
             {
                 loader: "file-loader",
@@ -31,5 +30,5 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
     const cssLoader = buildCssLoader(isDev);
 
-    return [fileLoader, svgLoader, babelLoader, typescriptLoaders, cssLoader];
+    return [babelLoader, typescriptLoaders, cssLoader, svgLoader, fileLoader];
 }

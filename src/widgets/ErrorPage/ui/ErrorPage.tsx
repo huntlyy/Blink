@@ -1,5 +1,5 @@
 import { classNames } from "shared/lib/classNames/classNames"
-import * as cls from './ErrorPage.module.scss'
+import cls from './ErrorPage.module.scss'
 
 export interface ErrorPageProps {
     className?: string

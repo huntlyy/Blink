@@ -1,6 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames"
 import { memo } from "react"
-import * as cls from './NotFoundPage.module.scss'
+import  cls from './NotFoundPage.module.scss'
 
 export interface NotFoundPageProps {
     className?: string

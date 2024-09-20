@@ -5,11 +5,12 @@
     ],
     "plugins": ["stylelint-scss"],
     "rules": {
-      "scss/double-slash-comment-whitespace-inside": null,
+      "declaration-empty-line-before": null,
       "selector-class-pattern": null,
-      "at-rule-empty-line-before": "always",
-      "rule-empty-line-before": null,
-      "custom-property-empty-line-before": "always"
+      "declaration-block-no-redundant-longhand-properties": null,
+      "no-descending-specificity": null,
+      "color-function-notation": null,
+      "keyframes-name-pattern": null
     }
   }
   

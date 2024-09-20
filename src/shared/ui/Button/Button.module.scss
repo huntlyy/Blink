@@ -19,10 +19,10 @@
     border-radius: var(--btn-border-radius);
     padding: var(--btn-padding);
     background-color: var(--secondary-color);
-    color: var(--primary-color);
+    color: var(--text-color);
     transition-property: color background-color transform border-color;
     transition-duration: var(--transition-duration);
-    border: var(--border-width) solid var(--great-color);
+    border: var(--border-width) solid var(--primary-color);
   
     &:hover{
       border-color: var(--text-color);

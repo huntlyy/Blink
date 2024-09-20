@@ -21,7 +21,7 @@
   height: 10%;
   transition-property: opacity transform;
   transition-duration: var(--transition-duration);
-  background-color: black;
+  background-color: var(--text-color);
 }
 
 .line1 {

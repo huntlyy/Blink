@@ -1,6 +1,5 @@
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { FC } from 'react';
 import cls from './Nav.module.scss';
 import { navItems } from './config';
 
@@ -8,7 +7,7 @@ interface NavProps {
   className?: string;
 }
 
-const Nav: FC<NavProps> = (props) => {
+export const Nav = (props: NavProps) => {
   const { className = '' } = props;
 
   return (
@@ -26,5 +25,3 @@ const Nav: FC<NavProps> = (props) => {
     </nav>
   );
 };
-
-export default Nav;

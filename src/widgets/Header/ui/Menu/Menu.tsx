@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { HeaderProfile } from '../Profile/HeaderProfile';
 import cls from './Menu.module.scss';
 import { menuLinks } from './config';
 
@@ -10,7 +11,7 @@ interface MenuProps {
   onClose: () => void;
 }
 
-const Menu: FC<MenuProps> = (props) => {
+export const Menu = (props: MenuProps) => {
   const { className, isOpen, onClose } = props;
 
   return (
@@ -33,8 +34,7 @@ const Menu: FC<MenuProps> = (props) => {
           ))}
         </ul>
       </nav>
+      <HeaderProfile className={cls.profile} />
     </div>
   );
 };
-
-export default Menu;

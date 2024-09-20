@@ -1,10 +1,13 @@
 body.dark {
+    --bg-color: #000;
+    --primary-color: #117BC5;
+    --text-color: #FFF;
+    --secondary-color: #4893c9;
+  
+    // --
 
-    --bg-color: #313131;
-
-    --primary-color: #4a4a4a;
-
-    --secondary-color: #606060;
-
-    --text-color: #ffff;
-}
+    --great-color: #21b667;
+    --medium-color: #c5b711;
+    --bad-color: #c51111;
+    --empty-color: #272727;
+  }

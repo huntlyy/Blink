@@ -3,8 +3,7 @@ import { ThemeContext } from "../lib/ThemeContext";
 import { LOCAL_STORAGE_THEME_KEY, Theme } from "../lib/ThemeContext";
 
 export interface ThemeProviderProps {
-  children?: ReactNode;
-  initialTheme?: Theme
+  children: ReactNode;
 }
 
 const defaultTheme =
@@ -12,9 +11,9 @@ const defaultTheme =
 
 export function ThemeProvider(props: ThemeProviderProps) {
 
-    const { children, initialTheme } = props;
+    const { children } = props;
 
-    const [theme, setTheme] = useState<Theme>(defaultTheme || initialTheme || Theme.DARK);
+    const [theme, setTheme] = useState<Theme>(defaultTheme);
 
 
     const defaultProps = useMemo(

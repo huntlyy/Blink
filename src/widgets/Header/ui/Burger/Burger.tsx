@@ -9,7 +9,7 @@ interface BurgerProps {
   onClick: () => void;
 }
 
-const Burger: FC<BurgerProps> = (props) => {
+export const Burger = (props: BurgerProps) => {
   const { className, isOpen = false, onClick } = props;
 
   return (
@@ -27,5 +27,3 @@ const Burger: FC<BurgerProps> = (props) => {
     </div>
   );
 };
-
-export default Burger;

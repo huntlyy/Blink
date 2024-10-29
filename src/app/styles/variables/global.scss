@@ -24,7 +24,10 @@
     // btn
 
     --btn-padding: 0.6em 0.8em;
+    --btn-padding-m: 0.4em 0.6em;
+    --btn-padding-l: 0.2em 0.3em;
     --btn-border-radius: 0.5em;
+    --btn-border-radius-circle: 2em;
   
     // ---------
     // Title Font
@@ -54,7 +57,7 @@
 
     --transition-duration: 0.3s;
   
-    // indexs
+    // index
 
     --z-index-modal: 10;
     --z-index-header: 9;
@@ -70,7 +73,7 @@
 
     --container-margin: var(--index);
   
-    // medias
+    // media
 
     @media(width <= 1200px){
       --index: calc(0.86vh + 0.9vw)

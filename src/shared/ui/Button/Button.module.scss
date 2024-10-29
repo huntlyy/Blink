@@ -17,7 +17,7 @@
   
   .classic {
     border-radius: var(--btn-border-radius);
-    padding: var(--btn-padding);
+    padding: var(--btn-padding-m);
     background-color: var(--primary-color);
     color: var(--text-color);
     transition-property: color background-color transform border-color;
@@ -33,6 +33,14 @@
         stroke: var(--primary-color);
       }
     }
+  }
+
+  .gray {
+    margin: 0;
+    background-color: var(--glass-bg-color);
+    border-radius: var(--btn-border-radius-circle);
+    padding: var(--btn-padding-l);
+    border: none;
   }
   
   .outline{

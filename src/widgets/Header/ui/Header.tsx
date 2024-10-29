@@ -1,43 +1,49 @@
 import { classNames } from 'shared/lib/classNames/classNames'
-import useToggler from 'shared/lib/hooks/useToggler'
-import { memo } from 'react'
+import { FormEvent, memo, useState } from 'react'
 import { Logo } from 'shared/ui/Logo/Logo'
+import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/ThemeSwitcher'
+import { Input } from 'shared/ui/Input/Input'
+import { Search } from 'shared/ui/Search/Search'
 import cls from './Header.module.scss'
 import { Burger } from './Burger/Burger'
 import { Menu } from './Menu/Menu'
-import {Nav} from './Nav/Nav'
 import { HeaderProfile } from './Profile/HeaderProfile'
-
 
 interface HeaderProps {
     className?: string
+    onChange?: () => void
 }
 
 export const Header = memo((props: HeaderProps) => {
 
-    const [isOpen, isOpenToggler, setIsOpen] = useToggler(false);
-    
-    const onCLoseMenu = () => {
-        setIsOpen(false)
+    const [collapsed, setCollapsed] = useState<boolean>(false)
+    const [inputValue, setInputValue] = useState<string>('')
+    const onToggle = () => {
+      setCollapsed(prev => !prev)
     }
-    const {className} = props
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+    }
+
+    const {className, onChange} = props
 
     return <header
     className={classNames(cls.Header, {
-      [cls.open]: isOpen,
+      [cls.open]: collapsed,
     }, [className, 'container'])}
   >
 
       <div className={cls.row}>
         <Logo />
+        <Search value={inputValue} onChange={onChange} onSubmit={onSubmit}/>
+        <ThemeSwitcher />
         <Burger
-        isOpen={isOpen}
-        onClick={isOpenToggler}
+        isOpen={collapsed}
+        onClick={onToggle}
         className={cls.burger}
       />
-        <Nav className={cls.nav} />
         <HeaderProfile className={cls.profile}/>
       </div>
-      <Menu onClose={onCLoseMenu} isOpen={isOpen} />
+      <Menu onClose={onToggle} isOpen={collapsed} />
     </header>
 })

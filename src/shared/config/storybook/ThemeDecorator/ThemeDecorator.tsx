@@ -6,6 +6,6 @@ export const ThemeDecorator = (theme: Theme): Decorator => (Story) => {
     document.body.className = theme
     
     return (
-        <Story />
+      <Story />
     );
 };

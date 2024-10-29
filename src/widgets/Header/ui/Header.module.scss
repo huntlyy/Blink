@@ -17,8 +17,10 @@
     // border: var(--border-size-d) solid var(--primary-color);
   
     border-top: none;
-    padding: calc(var(--index) * 0.75) calc(var(--index) * 1.2);
+    padding: calc(var(--index) * 0.65) calc(var(--index) * 1.2);
+
     background: var(--glass-bg-color);
+
     backdrop-filter: blur(var(--glass-bg-blur));
     overflow: hidden; 
     transition-property: min-height transform opacity margin;

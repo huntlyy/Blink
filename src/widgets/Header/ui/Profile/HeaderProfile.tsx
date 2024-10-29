@@ -22,7 +22,7 @@ export const HeaderProfile = ({ className }: HeaderProfileProps) => {
 
   return (
     <div className={classNames(cls.HeaderProfile, {}, [className!])}>
-      <Button onClick={openAuthModal}>Войти</Button>
+      <Button onClick={openAuthModal}>ВОЙТИ</Button>
     </div>
   );
 };

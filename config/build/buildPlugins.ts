@@ -3,6 +3,7 @@ import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
+import Dotenv from 'dotenv-webpack';
 import { BuildOptions } from "./types/config";
 
 export function buildPlugins({
@@ -19,6 +20,13 @@ export function buildPlugins({
             chunkFilename: "css/[name].[contenthash:8].css",
         }),
     ]
+
+    new webpack.DefinePlugin({
+        _IS_DEV_: JSON.stringify(isDev)
+    })
+
+    new Dotenv()
+
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin()),
         plugins.push(new BundleAnalyzerPlugin({

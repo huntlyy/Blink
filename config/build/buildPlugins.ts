@@ -6,9 +6,8 @@ import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import Dotenv from 'dotenv-webpack';
 import { BuildOptions } from "./types/config";
 
-export function buildPlugins({
-    paths, isDev
-}: BuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstance[] {
+    const {isDev, paths} = options
     const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
@@ -22,8 +21,8 @@ export function buildPlugins({
     ]
 
     new webpack.DefinePlugin({
-        _IS_DEV_: JSON.stringify(isDev)
-    })
+        __IS_DEV__: JSON.stringify(isDev),
+      }),
 
     new Dotenv()
 

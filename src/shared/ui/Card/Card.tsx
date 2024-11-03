@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
-import { AppLink } from "../AppLink/AppLink"
 import { Mods, classNames } from "shared/lib/classNames/classNames"
+import { AppLink } from "../AppLink/AppLink"
 import cls from './Card.module.scss'
 
 interface CardProps {
@@ -23,8 +23,8 @@ export const Card = (props: CardProps) => {
     }
 
     return <AppLink to={to} className={classNames(cls.Card, mods , [className])}>
-        <div className={cls.wrapper_image} style={{paddingTop:`${heightSize}`}}>
-            <img className={cls.image} src={src} alt={alt} /> {children && children}
-        </div>
+      <div className={cls.wrapper_image} style={{paddingTop:`${heightSize}`}}>
+        <img className={cls.image} src={src} alt={alt} /> {children && children}
+      </div>
     </AppLink>
 }

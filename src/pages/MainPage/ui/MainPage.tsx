@@ -4,55 +4,55 @@ import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { CatalogCard } from 'entities/CatalogCard';
 import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
 import { GridList } from 'shared/ui/GridList/GridList';
-import cls from './CatalogList.module.scss';
+import cls from './MainPage.module.scss';
 
 interface CatalogListProps {
   className?: string;
-  error?: string;
-  items: CatalogListTypes;
-  isLoading: boolean;
-  loadingMore: boolean;
+  // error?: string;
+  // items: CatalogListTypes;
+  // isLoading: boolean;
+  // loadingMore: boolean;
 }
 
-export default function CatalogList (props: CatalogListProps) {
+export default function MainPage (props: CatalogListProps) {
   const {
     className,
-    items,
-    isLoading = false,
-    loadingMore = false,
-    error = '',
+    // items,
+    // isLoading = false,
+    // loadingMore = false,
+    // error = '',
   } = props;
 
-  if (error) {
-    return <div>{error}</div>;
-  }
+  // if (error) {
+  //   return <div>{error}</div>;
+  // }
 
-  if (isLoading && loadingMore) {
-    return <PageLoader />;
-  }
+  // if (isLoading && loadingMore) {
+  //   return <PageLoader />;
+  // }
 
-  if (items.length < 1 && !loadingMore) {
-    return (
-      <Text align={TextAlign.CENTER} title='Ничего не найдено' />
-    );
-  }
+  // if (items.length < 1 && !loadingMore) {
+  //   return (
+  //     <Text align={TextAlign.CENTER} title='Ничего не найдено' />
+  //   );
+  // }
 
   return (
-    <GridList className={classNames(cls.CatalogList, {}, [className])}>
-      {items.map((item, index) => (
-        <CatalogCard
-          genres={item.genres}
-          countries={item.countries}
-          key={item.kinopoiskId || index}
-          kinopoiskId={item.kinopoiskId}
-          ratingKinopoisk={item.ratingKinopoisk}
-          nameRu={item.nameRu}
-          posterUrl={item.posterUrl}
-          posterUrlPreview={item.posterUrlPreview}
-          year={item.year}
-        />
-      ))}
-    </GridList>
-
+    // <GridList className={classNames(cls.MainPage, {}, [className])}>
+    //   {/* {items.map((item, index) => (
+    //     <CatalogCard
+    //       genres={item.genres}
+    //       countries={item.countries}
+    //       key={item.kinopoiskId || index}
+    //       kinopoiskId={item.kinopoiskId}
+    //       ratingKinopoisk={item.ratingKinopoisk}
+    //       nameRu={item.nameRu}
+    //       posterUrl={item.posterUrl}
+    //       posterUrlPreview={item.posterUrlPreview}
+    //       year={item.year}
+    //     />
+    //   ))} */}
+    // </GridList>
+    <div>Main</div>
   );
 };

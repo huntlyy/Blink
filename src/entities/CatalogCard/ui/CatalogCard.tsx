@@ -4,7 +4,7 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { RatingMovie } from 'shared/ui/RatingMovie/ui/RatingMovie';
 import { List, ListTheme } from 'shared/ui/List/List';
 import { Card } from 'shared/ui/Card/Card';
-import cls from './CatalogPreviewCard.module.scss';
+import cls from './CatalogCard.module.scss';
 
 interface CatalogCardProps extends CatalogItem{
   className?: string;

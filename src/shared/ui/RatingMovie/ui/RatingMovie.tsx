@@ -1,7 +1,7 @@
-import cls from './Rating.module.scss';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { ScoreRating } from '../lib/ScoreRating';
 import { Score } from '../types/types';
-import { classNames } from 'shared/lib/classNames/classNames';
+import cls from './RatingMovie.module.scss';
 
 interface RatingMovieProps {
   className?: string;

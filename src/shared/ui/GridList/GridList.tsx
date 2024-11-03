@@ -12,6 +12,6 @@ export const GridList = (props: GridListProps) => {
     const {children, className} = props
 
     return <ul className={classNames(cls.GridList, {}, [className])}>
-        {children}
+      {children}
     </ul>
 }

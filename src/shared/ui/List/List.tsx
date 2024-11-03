@@ -1,6 +1,6 @@
 import { Mods, classNames } from "shared/lib/classNames/classNames"
-import cls from './CatalogCard.module.scss'
 import { AppLink } from "shared/ui/AppLink/AppLink"
+import cls from './List.module.scss'
 
 interface List {
     to?: string
@@ -34,7 +34,7 @@ export const List = (props: ListProps) => {
     return <ul
     className={classNames(cls.List, mods , [className])}
   >
-    {list?.map((tag, index) => {
+      {list?.map((tag, index) => {
       const { to, label } = tag;
 
       return (
@@ -58,5 +58,5 @@ export const List = (props: ListProps) => {
         </li>
       );
     })}
-  </ul>
+    </ul>
 }

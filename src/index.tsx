@@ -8,7 +8,7 @@ import { StoreProvider } from "app/providers/StoreProvider";
 const container = document.getElementById("root");
 const root = createRoot(container!); 
 root.render(
-  <StoreProvider>
+  // <StoreProvider>
     <ErrorBoundary>
     <BrowserRouter>
       <ThemeProvider>
@@ -16,5 +16,5 @@ root.render(
       </ThemeProvider>
       </BrowserRouter>,
     </ErrorBoundary>
-    </StoreProvider>
+    // </StoreProvider>
 );

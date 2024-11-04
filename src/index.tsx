@@ -3,15 +3,18 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "app/providers/ThemeProvider";
 import { ErrorBoundary } from "app/providers/ErrorBoundary";
 import { App } from "./app/App";
+import { StoreProvider } from "app/providers/StoreProvider";
 
 const container = document.getElementById("root");
-const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+const root = createRoot(container!); 
 root.render(
-  <BrowserRouter>
+  <StoreProvider>
     <ErrorBoundary>
+    <BrowserRouter>
       <ThemeProvider>
         <App />
       </ThemeProvider>
+      </BrowserRouter>,
     </ErrorBoundary>
-  </BrowserRouter>,
+    </StoreProvider>
 );

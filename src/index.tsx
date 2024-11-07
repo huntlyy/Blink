@@ -4,6 +4,7 @@ import { ThemeProvider } from "app/providers/ThemeProvider";
 import { ErrorBoundary } from "app/providers/ErrorBoundary";
 import { App } from "./app/App";
 import { StoreProvider } from "app/providers/StoreProvider";
+import './app/firebase'
 
 const container = document.getElementById("root");
 const root = createRoot(container!); 

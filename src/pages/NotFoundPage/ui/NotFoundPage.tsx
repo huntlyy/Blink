@@ -1,18 +1,19 @@
-import { classNames } from "shared/lib/classNames/classNames"
-import { memo } from "react"
-import  cls from './NotFoundPage.module.scss'
+import { classNames } from 'shared/lib/classNames/classNames';
+import { memo } from 'react';
+import cls from './NotFoundPage.module.scss';
 
 export interface NotFoundPageProps {
-    className?: string
+    className?: string;
 }
 
 const NotFoundPage = (props: NotFoundPageProps) => {
+    const { className } = props;
 
-    const {className} = props
+    return (
+        <div className={classNames(cls.NotFoundPage, {}, [className])}>
+            Страница не найдена
+        </div>
+    );
+};
 
-    return <div className={classNames(cls.NotFoundPage, {}, [className])}>
-      Страница не найдена
-    </div>
-}
-
-export default NotFoundPage
+export default NotFoundPage;

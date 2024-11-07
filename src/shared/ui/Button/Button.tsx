@@ -1,21 +1,21 @@
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import React from 'react';
-import  cls from './Button.module.scss';
+import cls from './Button.module.scss';
 
 export enum ThemeButton {
     CLEAR = 'clear',
     OUTLINE = 'outline',
     CLASSIC = 'classic',
     GRAY = 'gray',
-    ACCENT = 'accent'
+    ACCENT = 'accent',
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: ThemeButton;
     children?: ReactNode;
-    centered?: boolean
+    centered?: boolean;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -29,16 +29,16 @@ export const Button = memo((props: ButtonProps) => {
 
     const mods: Mods = {
         [cls.centered]: centered,
-        [cls[theme]]: true
-    }
+        [cls[theme]]: true,
+    };
 
     return (
-      <button
+        <button
             type="button"
             className={classNames(cls.Button, mods, [className])}
             {...otherProps}
         >
-        {children}
-      </button>
+            {children}
+        </button>
     );
 });

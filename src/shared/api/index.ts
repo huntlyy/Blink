@@ -1,1 +1,1 @@
-export * as kinopoiskApi from './kinopoisk'
+export * as kinopoiskApi from './kinopoisk';

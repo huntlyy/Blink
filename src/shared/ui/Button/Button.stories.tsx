@@ -11,7 +11,6 @@ const meta = {
     },
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
     tags: ['autodocs'],
-
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -28,6 +27,6 @@ export const Clear: Story = {
 export const Outline: Story = {
     args: {
         children: 'Text',
-        theme: ThemeButton.OUTLINE
-    }
-}
+        theme: ThemeButton.OUTLINE,
+    },
+};

@@ -1,4 +1,4 @@
-import { Score } from "../types/types";
+import { Score } from '../types/types';
 
 const EMPTY_THRESHOLD = 7.5;
 const MEDIUM_THRESHOLD = 4;

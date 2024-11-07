@@ -1,4 +1,4 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from '@storybook/react';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { Theme } from '../../src/app/providers/ThemeProvider/lib/ThemeContext';
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -18,6 +18,6 @@ const preview: Preview = {
         // StyleDecorator,
         // ThemeDecorator(Theme.DARK),
         // RouterDecorator
-    ]
-}
+    ],
+};
 export default preview;

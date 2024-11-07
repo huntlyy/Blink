@@ -1,11 +1,12 @@
-import pluginJs from "@eslint/js";
-import tseslint from "@typescript-eslint/eslint-plugin";
-import pluginReactConfig from 'eslint-plugin-react'
-import jsxA11y from "eslint-plugin-jsx-a11y";
+import pluginJs from '@eslint/js';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import pluginReactConfig from 'eslint-plugin-react';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import airbnbConfig from 'eslint-config-airbnb';
 import typescriptParser from '@typescript-eslint/parser';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactPluginImport from 'eslint-plugin-import';
+import prettier from 'eslint-config-prettier';
 
 export default [
     {
@@ -14,7 +15,7 @@ export default [
             ecmaVersion: 'latest',
             sourceType: 'module',
             globals: {
-                __IS_DEV__: true
+                __IS_DEV__: true,
             },
             parser: typescriptParser,
             parserOptions: {
@@ -26,18 +27,19 @@ export default [
     },
     {
         plugins: {
-            react: pluginReactConfig, 
+            react: pluginReactConfig,
             react_hooks: reactHooksPlugin,
             jsx_a11y: jsxA11y,
             import: reactPluginImport,
-            tseslint, pluginJs
+            tseslint,
+            pluginJs,
+            prettier: prettier,
         },
     },
     {
         rules: {
             ...airbnbConfig.rules,
-            // Отступы
-            'react/jsx-indent': [2, 2],
+            'react/jsx-max-props-per-line': ['error', { maximum: 3 }],
             'react/jsx-filename-extension': [
                 2,
                 { extensions: ['.js', '.jsx', '.tsx', '.ts'] },
@@ -65,6 +67,6 @@ export default [
         },
     },
     {
-        ignores: ['node_modules/']
+        ignores: ['node_modules/'],
     },
 ];

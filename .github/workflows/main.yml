@@ -30,6 +30,9 @@ jobs:
       - name: unit testing
         if: always()
         run: npm run unit
+      - name: prettier 
+        if: always()
+        run: npm run prettier
       # - name: build storybook
       #   run: npm run storybook:build
       # - name: screenshot testing

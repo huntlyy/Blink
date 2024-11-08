@@ -8,9 +8,11 @@ import {
 import { AxiosInstance } from 'axios';
 import { CatalogFilmPageSchema } from 'pages/CatalogFilmPage/model/types/CatalogFilmPageSchema';
 import { NavigateOptions, To } from 'react-router-dom';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
     catalog: CatalogFilmPageSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 }
 
 export type StateSchemaKey = keyof StateSchema;

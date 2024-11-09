@@ -9,10 +9,12 @@ import { $kinopoisk } from 'shared/api/kinopoisk/baseApi';
 import { catalogReducer } from 'pages/CatalogFilmPage/model/slice/catalogPageSlice';
 import { createReducerManager } from './reducerManager';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
+import { userReducer } from 'entities/User';
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         catalog: catalogReducer,
+        user: userReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };
 

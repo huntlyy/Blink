@@ -8,6 +8,7 @@ import {
 import { AxiosInstance } from 'axios';
 import { UserSchema } from 'entities/User/models/types/user';
 import { CatalogMoviesSchema } from 'features/MoviesFilterAndSearch/model/types/types';
+import { WatchStatusSchema } from 'features/StatusWatch/model/types/types';
 import { CatalogFilmPageSchema } from 'pages/CatalogFilmPage/model/types/CatalogFilmPageSchema';
 import { NavigateOptions, To } from 'react-router-dom';
 import { rtkApi } from 'shared/api/kinopoisk/rtkApi';
@@ -16,9 +17,8 @@ export interface StateSchema {
     catalog: CatalogFilmPageSchema;
     user: UserSchema;
     catalogMovies: CatalogMoviesSchema;
+    watchStatus: WatchStatusSchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
-
-    //Async reducers
 }
 
 export type StateSchemaKey = keyof StateSchema;

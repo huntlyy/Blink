@@ -10,11 +10,13 @@ import { catalogReducer } from 'pages/CatalogFilmPage/model/slice/catalogPageSli
 import { createReducerManager } from './reducerManager';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { userReducer } from 'entities/User';
+import { WatchStatusReducer } from 'features/StatusWatch/model/slice/watchStatusSlice';
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         catalog: catalogReducer,
         user: userReducer,
+        watchStatus: WatchStatusReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };
 

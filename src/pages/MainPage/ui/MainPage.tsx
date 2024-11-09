@@ -5,6 +5,7 @@ import { CatalogCard } from 'entities/CatalogCard';
 import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
 import { GridList } from 'shared/ui/GridList/GridList';
 import cls from './MainPage.module.scss';
+import Select from 'react-select/dist/declarations/src/Select';
 
 interface CatalogListProps {
     className?: string;
@@ -53,6 +54,6 @@ export default function MainPage(props: CatalogListProps) {
         //     />
         //   ))} */}
         // </GridList>
-        <div>Main</div>
+        <div>MAin</div>
     );
 }

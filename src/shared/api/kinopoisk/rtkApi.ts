@@ -6,9 +6,9 @@ export const rtkApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.KINOPOISK_API_URL,
         prepareHeaders: (headers) => {
-            const token = localStorage.getItem(LOCAL_STORAGE_USER_KEY || '');
+            const token = localStorage.getItem(LOCAL_STORAGE_USER_KEY);
             if (token) {
-                headers.set('Auth', token);
+                headers.set('Authorization', token);
             }
             return headers;
         },

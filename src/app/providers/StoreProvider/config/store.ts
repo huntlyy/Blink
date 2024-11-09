@@ -4,7 +4,7 @@ import {
     Reducer,
     ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { rtkApi } from 'shared/api/rtkApi';
+import { rtkApi } from 'shared/api/kinopoisk/rtkApi';
 import { $kinopoisk } from 'shared/api/kinopoisk/baseApi';
 import { catalogReducer } from 'pages/CatalogFilmPage/model/slice/catalogPageSlice';
 import { createReducerManager } from './reducerManager';

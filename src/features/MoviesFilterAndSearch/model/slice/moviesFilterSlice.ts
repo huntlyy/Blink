@@ -23,3 +23,6 @@ export const moviesFilterSlice = createSlice({
         },
     },
 });
+
+export const { actions: moviesFilterAction } = moviesFilterSlice;
+export const { reducer: moviesFilterReducer } = moviesFilterSlice;

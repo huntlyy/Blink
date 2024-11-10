@@ -11,11 +11,13 @@ import { createReducerManager } from './reducerManager';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { userReducer } from 'entities/User';
 import { WatchStatusReducer } from 'features/StatusWatch/model/slice/watchStatusSlice';
+import { moviesFilterReducer } from 'features/MoviesFilterAndSearch/model/slice/moviesFilterSlice';
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         catalog: catalogReducer,
         user: userReducer,
+        catalogMovies: moviesFilterReducer,
         watchStatus: WatchStatusReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };

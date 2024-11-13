@@ -1,7 +1,7 @@
 import {
     catalogOrderTypes,
     catalogTypeTypes,
-} from 'shared/api/kinopoisk/models';
+} from 'entities/Film/model/types/Film';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CatalogMoviesSchema, catalogURLParams } from '../types/types';
 

@@ -1,8 +1,4 @@
-import {
-    CatalogParams,
-    catalogOrderTypes,
-    catalogTypeTypes,
-} from 'shared/api/kinopoisk/models';
+import { catalogOrderTypes, catalogTypeTypes,CatalogParams } from "entities/Film/model/types/Film";
 
 export enum URLParams {
     order = 'order',

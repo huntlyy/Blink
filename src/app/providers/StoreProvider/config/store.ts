@@ -6,17 +6,15 @@ import {
 } from '@reduxjs/toolkit';
 import { rtkApi } from 'shared/api/kinopoisk/rtkApi';
 import { $kinopoisk } from 'shared/api/kinopoisk/api';
-import { catalogReducer } from 'pages/CatalogFilmPage/model/slice/catalogPageSlice';
 import { userReducer } from 'entities/User';
 import { WatchStatusReducer } from 'features/StatusWatch/model/slice/watchStatusSlice';
 import { moviesFilterReducer } from 'features/MoviesFilterAndSearch/model/slice/moviesFilterSlice';
+import { FilmDetailsReducer } from 'entities/Film/model/slice/FilmDetailsSlice';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
-import { FilmDetailsReducer } from 'entities/Film/model/slice/FilmDetailsSlice';
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
-        catalog: catalogReducer,
         user: userReducer,
         catalogMovies: moviesFilterReducer,
         watchStatus: WatchStatusReducer,

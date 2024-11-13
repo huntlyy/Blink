@@ -5,25 +5,16 @@ import { CatalogCard } from 'entities/CatalogCard';
 import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
 import { GridList } from 'shared/ui/GridList/GridList';
 import cls from './MainPage.module.scss';
-import Select from 'react-select/dist/declarations/src/Select';
 
-interface CatalogListProps {
-    className?: string;
-    // error?: string;
-    // items: CatalogListTypes;
-    // isLoading: boolean;
-    // loadingMore: boolean;
-}
+// interface MainPageProps {
+//     className?: string;
+//     error?: string;
+//     items: CatalogListTypes;
+//     isLoading: boolean;
+//     loadingMore: boolean;
+// }
 
-export default function MainPage(props: CatalogListProps) {
-    const {
-        className,
-        // items,
-        // isLoading = false,
-        // loadingMore = false,
-        // error = '',
-    } = props;
-
+export default function MainPage() {
     // if (error) {
     //   return <div>{error}</div>;
     // }
@@ -40,7 +31,7 @@ export default function MainPage(props: CatalogListProps) {
 
     return (
         // <GridList className={classNames(cls.MainPage, {}, [className])}>
-        //   {/* {items.map((item, index) => (
+        //   {items.map((item, index) => (
         //     <CatalogCard
         //       genres={item.genres}
         //       countries={item.countries}
@@ -52,8 +43,8 @@ export default function MainPage(props: CatalogListProps) {
         //       posterUrlPreview={item.posterUrlPreview}
         //       year={item.year}
         //     />
-        //   ))} */}
+        //   ))}
         // </GridList>
-        <div>MAin</div>
+        <div>main</div>
     );
 }

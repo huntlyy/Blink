@@ -6,6 +6,7 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
+import { FilmDetailsSchema } from 'entities/Film/model/types/FilmDetailsSchema';
 import { UserSchema } from 'entities/User/models/types/user';
 import { CatalogMoviesSchema } from 'features/MoviesFilterAndSearch/model/types/types';
 import { WatchStatusSchema } from 'features/StatusWatch/model/types/types';
@@ -19,6 +20,9 @@ export interface StateSchema {
     catalogMovies: CatalogMoviesSchema;
     watchStatus: WatchStatusSchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
+
+    //async reducer
+    FilmDetails?: FilmDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

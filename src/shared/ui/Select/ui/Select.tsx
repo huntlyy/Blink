@@ -1,7 +1,7 @@
 import Select from 'react-select';
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './Select.module.scss';
 import { memo, useCallback } from 'react';
+import cls from './Select.module.scss';
 
 export interface SelectOption {
     value: string | number;

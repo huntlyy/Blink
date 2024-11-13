@@ -1,6 +1,6 @@
-import { WatchStatus } from './../types/types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { WatchStatusSchema } from '../types/types';
+import { WatchStatus } from './../types/types';
 
 const initialState: WatchStatusSchema = {
     status: null,

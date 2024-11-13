@@ -2,8 +2,8 @@ import {
     catalogOrderTypes,
     catalogTypeTypes,
 } from 'shared/api/kinopoisk/models';
-import { CatalogMoviesSchema, catalogURLParams } from '../types/types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { CatalogMoviesSchema, catalogURLParams } from '../types/types';
 
 export const catalogMovieDefaultOrder = catalogOrderTypes.NUM_VOTE;
 export const catalogMovieDefaultType = catalogTypeTypes.ALL;

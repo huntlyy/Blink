@@ -17,6 +17,7 @@ export function App() {
             <Header />
             <main className={classNames('main container')}>
                 <AppRouter />
+                {`${process.env.KINO_API_URL}`}
             </main>
         </div>
     );

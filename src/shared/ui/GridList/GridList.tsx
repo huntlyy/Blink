@@ -4,7 +4,7 @@ import cls from './GridList.module.scss';
 
 interface GridListProps {
     className?: string;
-    children: ReactNode;
+    children?: ReactNode;
 }
 
 export const GridList = (props: GridListProps) => {

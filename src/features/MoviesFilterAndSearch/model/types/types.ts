@@ -1,4 +1,8 @@
-import { catalogOrderTypes, catalogTypeTypes,CatalogParams } from "entities/Film/model/types/Film";
+import {
+    catalogOrderTypes,
+    catalogTypeTypes,
+    CatalogParams,
+} from 'entities/Film/model/types/Film';
 
 export enum URLParams {
     order = 'order',

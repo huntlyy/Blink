@@ -1,17 +1,18 @@
 import { CatalogItem } from 'entities/Film/model/types/Film';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card/Card';
-import cls from './PreviewCard.module.scss';
+import cls from './FilmCard.module.scss';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { RatingMovie } from 'shared/ui/RatingMovie/ui/RatingMovie';
 import { List, ListTheme } from 'shared/ui/List/List';
 import { memo, useCallback, useEffect, useState } from 'react';
+import { Text } from 'shared/ui/Text/Text';
 
-interface PreviewCardProps extends CatalogItem {
+interface FilmCardProps extends CatalogItem {
     className?: string;
 }
 
-export const PreviewCard = memo((props: PreviewCardProps) => {
+export const FilmCard = memo((props: FilmCardProps) => {
     const {
         className,
         countries,
@@ -24,25 +25,29 @@ export const PreviewCard = memo((props: PreviewCardProps) => {
         year,
     } = props;
 
-    const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 3840);
+    const [isWideScreen, setIsWideScreen] = useState(
+        typeof window !== 'undefined' && window.innerWidth > 3840
+    );
 
     const handleResize = useCallback(() => {
-        setIsWideScreen(window.innerWidth > 3840);
+        if (typeof window !== 'undefined') {
+            setIsWideScreen(window.innerWidth > 3840);
+        }
     }, []);
 
     useEffect(() => {
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
     }, [handleResize]);
 
     const createList = useCallback(
-        (
-            items: { genre?: string; country?: string }[],
-            key: 'genre' | 'country',
-        ) => {
-            return items.map((item) => ({ label: item[key] || '' }));
-        },
-        [],
+        <T extends { genre?: string; country?: string }>(
+            items: T[],
+            key: keyof T,
+        ) => items.map((item) => ({ label: item[key] || '' })),
+        []
     );
 
     const genresList = createList(genres, 'genre');
@@ -51,7 +56,7 @@ export const PreviewCard = memo((props: PreviewCardProps) => {
     return (
         <li>
             <Card
-                className={classNames(cls.PreviewCard, {}, [className])}
+                className={classNames(cls.FilmCard, {}, [className])}
                 alt={`Постер для фильма ${nameRu}`}
                 src={isWideScreen ? posterUrl : posterUrlPreview}
                 withOverflow
@@ -71,8 +76,8 @@ export const PreviewCard = memo((props: PreviewCardProps) => {
                         list={countriesList}
                         theme={ListTheme.OUTLINE}
                     />
-                    <h6 className={cls.name}>{nameRu}</h6>
-                    <span className={cls.year}>{year}</span>
+                    <Text title={nameRu} className={cls.name} />
+                    <Text text={year} className={cls.year} />
                 </div>
             </Card>
         </li>

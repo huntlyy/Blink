@@ -1,6 +1,6 @@
 import {
-    catalogOrderTypes,
-    catalogTypeTypes,
+    CatalogOrderTypes,
+    CatalogTypeTypes,
     CatalogParams,
 } from 'entities/Film/model/types/Film';
 
@@ -13,8 +13,8 @@ export enum URLParams {
 }
 
 export interface catalogURLParams {
-    order?: catalogOrderTypes | string;
-    type?: catalogTypeTypes | string;
+    order?: CatalogOrderTypes | string;
+    type?: CatalogTypeTypes | string;
     genre?: number;
     country?: number;
     keyword?: string;

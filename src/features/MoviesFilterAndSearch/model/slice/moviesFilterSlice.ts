@@ -1,12 +1,12 @@
 import {
-    catalogOrderTypes,
-    catalogTypeTypes,
+    CatalogOrderTypes,
+    CatalogTypeTypes,
 } from 'entities/Film/model/types/Film';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CatalogMoviesSchema, catalogURLParams } from '../types/types';
 
-export const catalogMovieDefaultOrder = catalogOrderTypes.NUM_VOTE;
-export const catalogMovieDefaultType = catalogTypeTypes.ALL;
+export const catalogMovieDefaultOrder = CatalogOrderTypes.NUM_VOTE;
+export const catalogMovieDefaultType = CatalogTypeTypes.ALL;
 
 const initialState: CatalogMoviesSchema = {
     order: catalogMovieDefaultOrder,

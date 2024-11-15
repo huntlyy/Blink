@@ -18,10 +18,10 @@ export enum TextSize {
     L = 'size_l',
 }
 
-interface TextProps {
+interface TextProps<T = string | number, K = string | number> {
     className?: string;
-    title?: string;
-    text?: string;
+    title?: T;
+    text?: K;
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;

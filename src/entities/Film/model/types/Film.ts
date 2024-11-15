@@ -1,5 +1,22 @@
-export type genresList = { genre: string }[];
-export type countriesList = { country: string }[];
+export type ListItem<T> = T[]; 
+
+export interface Genre {
+    genre: string;
+}
+
+export interface Country {
+    country: string;
+}
+
+export type GenresList = ListItem<Genre>; 
+export type CountriesList = ListItem<Country>; 
+
+
+export interface PaginatedResponse<T> {
+    total: number;
+    totalPages: number;
+    items: T[];
+}
 
 export interface CatalogItem {
     nameRu: string;
@@ -8,24 +25,21 @@ export interface CatalogItem {
     ratingKinopoisk: number;
     kinopoiskId: number;
     year: number;
-    genres: genresList;
-    countries: countriesList;
+    genres: GenresList;
+    countries: CountriesList;
 }
 
 export type CatalogList = CatalogItem[];
 
-export interface GetCatalogListResponse {
-    total: number;
-    totalPages: number;
-    items: CatalogList;
-}
+export type GetCatalogListResponse = PaginatedResponse<CatalogItem>;
 
-export enum catalogOrderTypes {
+export enum CatalogOrderTypes {
     RATING = 'RATING',
     NUM_VOTE = 'NUM_VOTE',
     YEAR = 'YEAR',
 }
-export enum catalogTypeTypes {
+
+export enum CatalogTypeTypes {
     FILM = 'FILM',
     TV_SHOW = 'TV_SHOW',
     TV_SERIES = 'TV_SERIES',
@@ -33,25 +47,25 @@ export enum catalogTypeTypes {
     ALL = 'ALL',
 }
 
-export const CatalogOrderOptions: Record<catalogOrderTypes, string> = {
-    [catalogOrderTypes.NUM_VOTE]: 'Количество голосов',
-    [catalogOrderTypes.RATING]: 'Рейтинг',
-    [catalogOrderTypes.YEAR]: 'Год',
+export const CatalogOrderOptions: Record<CatalogOrderTypes, string> = {
+    [CatalogOrderTypes.NUM_VOTE]: 'Количество голосов',
+    [CatalogOrderTypes.RATING]: 'Рейтинг',
+    [CatalogOrderTypes.YEAR]: 'Год',
 };
 
-export const CatalogTypeOptions: Record<catalogTypeTypes, string> = {
-    [catalogTypeTypes.ALL]: 'Все',
-    [catalogTypeTypes.FILM]: 'Фильмы',
-    [catalogTypeTypes.TV_SERIES]: 'ТV-сериалы',
-    [catalogTypeTypes.TV_SHOW]: 'ТV-шоу',
-    [catalogTypeTypes.MINI_SERIES]: 'Мини-сериалы',
+export const CatalogTypeOptions: Record<CatalogTypeTypes, string> = {
+    [CatalogTypeTypes.ALL]: 'Все',
+    [CatalogTypeTypes.FILM]: 'Фильмы',
+    [CatalogTypeTypes.TV_SERIES]: 'ТV-сериалы',
+    [CatalogTypeTypes.TV_SHOW]: 'ТV-шоу',
+    [CatalogTypeTypes.MINI_SERIES]: 'Мини-сериалы',
 };
 
 export interface CatalogParams {
     countries?: number[];
     genres?: number[];
-    order?: catalogOrderTypes;
-    type?: catalogTypeTypes;
+    order?: CatalogOrderTypes;
+    type?: CatalogTypeTypes;
     ratingFrom?: number;
     ratingTo?: number;
     yearFrom?: number;
@@ -60,37 +74,25 @@ export interface CatalogParams {
     page?: number;
 }
 
-export interface Film {
+export interface Film extends Omit<CatalogItem, 'nameRu'> {
     nameRu?: string;
     nameEn?: string;
     nameOriginal?: string;
-    posterUrl?: string;
     description?: string;
     ratingAgeLimits?: string;
-    kinopoiskId?: number;
     coverUrl?: string | null;
     logoUrl?: string | null;
-    ratingKinopoisk?: number;
     webUrl?: string;
-    year?: number;
     filmLength?: number;
     slogan?: string;
     shortDescription?: string;
-    type?: catalogTypeTypes;
-    genres?: genresList;
-    countries?: countriesList;
-    startYear?: null;
-    endYear?: null;
-    completed?: false;
+    type?: CatalogTypeTypes;
+    startYear?: number | null;
+    endYear?: number | null;
+    completed?: boolean;
 }
 
-export const FilmType: Record<catalogTypeTypes, string> = {
-    [catalogTypeTypes.FILM]: 'Фильмы',
-    [catalogTypeTypes.TV_SHOW]: 'TV-шоу',
-    [catalogTypeTypes.TV_SERIES]: 'TV-сериал',
-    [catalogTypeTypes.MINI_SERIES]: 'Мини-сериал',
-    [catalogTypeTypes.ALL]: 'Все',
-};
+export const FilmType: Record<CatalogTypeTypes, string> = CatalogTypeOptions;
 
 export interface FilmBudgetItem {
     type: string;
@@ -99,22 +101,13 @@ export interface FilmBudgetItem {
     name: string;
     symbol: string;
 }
-export interface FilmBudget {
-    total: number;
-    totalPages: number;
-    items: FilmBudgetItem[];
-}
+export type FilmBudget = PaginatedResponse<FilmBudgetItem>;
 
 export interface FilmImageItem {
     imageUrl: string;
     previewUrl: string;
 }
-
-export interface FilmImages {
-    total: number;
-    totalPages: number;
-    items: FilmImageItem[];
-}
+export type FilmImages = PaginatedResponse<FilmImageItem>;
 
 export enum FilmFactItemType {
     FACT = 'FACT',
@@ -126,11 +119,7 @@ export interface FilmFactItem {
     type: FilmFactItemType;
     spoiler: boolean;
 }
-
-export interface FilmFacts {
-    total: number;
-    items: FilmFactItem[];
-}
+export type FilmFacts = PaginatedResponse<FilmFactItem>;
 
 export enum TeamProfession {
     DIRECTOR = 'Режиссер',
@@ -147,14 +136,14 @@ export enum TeamProfession {
     HRONO_TITR_MALE = 'Мужской голос за кадром',
     HRONO_TITR_FEMALE = 'Женский голос за кадром',
     VOICE_MALE = 'Актер озвучки',
-    VOICE_FEMALE = 'Акриса озвучки',
+    VOICE_FEMALE = 'Актриса озвучки',
 }
 
 export interface FilmTeamItem {
     staffId: number;
     nameEn: string;
     nameRu: string;
-    description: null | string;
+    description?: string | null;
     posterUrl: string;
     professionText: string;
     professionKey: TeamProfession;
@@ -171,15 +160,17 @@ export interface Spouse {
     webUrl: string;
     relation: string;
 }
+
 export interface PersonFilmTypes {
     filmId: number;
     nameRu: string;
     nameEn: string;
-    rating: number | null;
+    rating?: number | null;
     general: boolean;
     description: string;
     professionKey: string;
 }
+
 export interface Person {
     personId?: number;
     webUrl?: string;

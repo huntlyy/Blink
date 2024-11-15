@@ -12,11 +12,9 @@ import { moviesFilterReducer } from 'features/MoviesFilterAndSearch/model/slice/
 import { FilmDetailsReducer } from 'entities/Film/model/slice/FilmDetailsSlice';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
-import { FilmPageReducer } from 'pages/FilmsPage/model/slice/FilmPageSlice';
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
-        filmsPage: FilmPageReducer,
         user: userReducer,
         catalogMovies: moviesFilterReducer,
         watchStatus: WatchStatusReducer,

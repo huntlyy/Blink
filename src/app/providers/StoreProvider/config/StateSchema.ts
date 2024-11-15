@@ -10,12 +10,10 @@ import { FilmDetailsSchema } from 'entities/Film/model/types/FilmDetailsSchema';
 import { UserSchema } from 'entities/User/models/types/user';
 import { CatalogMoviesSchema } from 'features/MoviesFilterAndSearch/model/types/types';
 import { WatchStatusSchema } from 'features/StatusWatch/model/types/types';
-import { FilmPageSchema } from 'pages/FilmsPage/model/types/types';
 import { NavigateOptions, To } from 'react-router-dom';
 import { rtkApi } from 'shared/api/kinopoisk/rtkApi';
 
 export interface StateSchema {
-    filmsPage: FilmPageSchema;
     user: UserSchema;
     catalogMovies: CatalogMoviesSchema;
     watchStatus: WatchStatusSchema;

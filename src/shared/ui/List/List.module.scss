@@ -34,7 +34,7 @@
       text-transform: uppercase;
     }
   
-    transition-duration: var(--transition-duration);
+    & {transition: var(--transition-duration)};
   }
   
   .bgBlur{

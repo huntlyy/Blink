@@ -1,14 +1,11 @@
-import {
-    CatalogOrderTypes,
-    CatalogTypeTypes,
-} from 'entities/Film/model/types/Film';
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { CatalogMoviesSchema, catalogURLParams } from '../types/types';
+import { FilmOrder, FilmTypes } from 'entities/Film/model/types/Film';
+import { createSlice } from '@reduxjs/toolkit';
+import { MoviesSchema } from '../types/types';
 
-export const catalogMovieDefaultOrder = CatalogOrderTypes.NUM_VOTE;
-export const catalogMovieDefaultType = CatalogTypeTypes.ALL;
+export const catalogMovieDefaultOrder = FilmOrder.NUM_VOTE;
+export const catalogMovieDefaultType = FilmTypes.ALL;
 
-const initialState: CatalogMoviesSchema = {
+const initialState: MoviesSchema = {
     order: catalogMovieDefaultOrder,
     type: catalogMovieDefaultType,
     URLParamsIsInstalled: false,
@@ -17,11 +14,7 @@ const initialState: CatalogMoviesSchema = {
 export const moviesFilterSlice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {
-        setParams: (state, action: PayloadAction<catalogURLParams>) => {
-            const { type, keyword, order, genre, country } = action.payload;
-        },
-    },
+    reducers: {},
 });
 
 export const { actions: moviesFilterAction } = moviesFilterSlice;

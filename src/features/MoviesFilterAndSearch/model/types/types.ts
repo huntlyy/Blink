@@ -1,7 +1,7 @@
 import {
-    CatalogOrderTypes,
-    CatalogTypeTypes,
-    CatalogParams,
+    FilmOrder,
+    FilmTypes,
+    FilmParams,
 } from 'entities/Film/model/types/Film';
 
 export enum URLParams {
@@ -12,14 +12,14 @@ export enum URLParams {
     keyword = 'keyword',
 }
 
-export interface catalogURLParams {
-    order?: CatalogOrderTypes | string;
-    type?: CatalogTypeTypes | string;
+export interface FilmURLParams {
+    order?: FilmOrder | string;
+    type?: FilmTypes | string;
     genre?: number;
     country?: number;
     keyword?: string;
 }
 
-export interface CatalogMoviesSchema extends Omit<CatalogParams, 'page'> {
+export interface MoviesSchema extends Omit<FilmParams, 'page'> {
     URLParamsIsInstalled: boolean;
 }

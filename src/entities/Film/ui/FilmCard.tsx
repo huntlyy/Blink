@@ -1,4 +1,4 @@
-import { CatalogItem } from 'entities/Film/model/types/Film';
+import { FilmItem } from 'entities/Film/model/types/Film';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card/Card';
 import cls from './FilmCard.module.scss';
@@ -8,7 +8,7 @@ import { List, ListTheme } from 'shared/ui/List/List';
 import { memo, useCallback, useEffect, useState } from 'react';
 import { Text } from 'shared/ui/Text/Text';
 
-interface FilmCardProps extends CatalogItem {
+interface FilmCardProps extends FilmItem {
     className?: string;
 }
 
@@ -26,7 +26,7 @@ export const FilmCard = memo((props: FilmCardProps) => {
     } = props;
 
     const [isWideScreen, setIsWideScreen] = useState(
-        typeof window !== 'undefined' && window.innerWidth > 3840
+        typeof window !== 'undefined' && window.innerWidth > 3840,
     );
 
     const handleResize = useCallback(() => {
@@ -47,7 +47,7 @@ export const FilmCard = memo((props: FilmCardProps) => {
             items: T[],
             key: keyof T,
         ) => items.map((item) => ({ label: item[key] || '' })),
-        []
+        [],
     );
 
     const genresList = createList(genres, 'genre');
@@ -76,8 +76,14 @@ export const FilmCard = memo((props: FilmCardProps) => {
                         list={countriesList}
                         theme={ListTheme.OUTLINE}
                     />
-                    <Text title={nameRu} className={cls.name} />
-                    <Text text={year} className={cls.year} />
+                    <Text
+                        title={nameRu}
+                        className={cls.name}
+                    />
+                    <Text
+                        text={year}
+                        className={cls.year}
+                    />
                 </div>
             </Card>
         </li>

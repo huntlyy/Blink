@@ -1,4 +1,4 @@
-export type ListItem<T> = T[]; 
+export type ListItem<T> = T[];
 
 export interface Genre {
     genre: string;
@@ -8,9 +8,8 @@ export interface Country {
     country: string;
 }
 
-export type GenresList = ListItem<Genre>; 
-export type CountriesList = ListItem<Country>; 
-
+export type GenresList = ListItem<Genre>;
+export type CountriesList = ListItem<Country>;
 
 export interface PaginatedResponse<T> {
     total: number;
@@ -18,7 +17,7 @@ export interface PaginatedResponse<T> {
     items: T[];
 }
 
-export interface CatalogItem {
+export interface FilmItem {
     nameRu: string;
     posterUrlPreview: string;
     posterUrl: string;
@@ -29,17 +28,17 @@ export interface CatalogItem {
     countries: CountriesList;
 }
 
-export type CatalogList = CatalogItem[];
+export type FilmList = FilmItem[];
 
-export type GetCatalogListResponse = PaginatedResponse<CatalogItem>;
+export type GetFilmListResponse = PaginatedResponse<FilmItem>;
 
-export enum CatalogOrderTypes {
+export enum FilmOrder {
     RATING = 'RATING',
     NUM_VOTE = 'NUM_VOTE',
     YEAR = 'YEAR',
 }
 
-export enum CatalogTypeTypes {
+export enum FilmTypes {
     FILM = 'FILM',
     TV_SHOW = 'TV_SHOW',
     TV_SERIES = 'TV_SERIES',
@@ -47,25 +46,25 @@ export enum CatalogTypeTypes {
     ALL = 'ALL',
 }
 
-export const CatalogOrderOptions: Record<CatalogOrderTypes, string> = {
-    [CatalogOrderTypes.NUM_VOTE]: 'Количество голосов',
-    [CatalogOrderTypes.RATING]: 'Рейтинг',
-    [CatalogOrderTypes.YEAR]: 'Год',
+export const FilmOrderOptions: Record<FilmOrder, string> = {
+    [FilmOrder.NUM_VOTE]: 'Количество голосов',
+    [FilmOrder.RATING]: 'Рейтинг',
+    [FilmOrder.YEAR]: 'Год',
 };
 
-export const CatalogTypeOptions: Record<CatalogTypeTypes, string> = {
-    [CatalogTypeTypes.ALL]: 'Все',
-    [CatalogTypeTypes.FILM]: 'Фильмы',
-    [CatalogTypeTypes.TV_SERIES]: 'ТV-сериалы',
-    [CatalogTypeTypes.TV_SHOW]: 'ТV-шоу',
-    [CatalogTypeTypes.MINI_SERIES]: 'Мини-сериалы',
+export const FilmTypeOptions: Record<FilmTypes, string> = {
+    [FilmTypes.ALL]: 'Все',
+    [FilmTypes.FILM]: 'Фильмы',
+    [FilmTypes.TV_SERIES]: 'ТV-сериалы',
+    [FilmTypes.TV_SHOW]: 'ТV-шоу',
+    [FilmTypes.MINI_SERIES]: 'Мини-сериалы',
 };
 
-export interface CatalogParams {
+export interface FilmParams {
     countries?: number[];
     genres?: number[];
-    order?: CatalogOrderTypes;
-    type?: CatalogTypeTypes;
+    order?: FilmOrder;
+    type?: FilmTypes;
     ratingFrom?: number;
     ratingTo?: number;
     yearFrom?: number;
@@ -74,7 +73,7 @@ export interface CatalogParams {
     page?: number;
 }
 
-export interface Film extends Omit<CatalogItem, 'nameRu'> {
+export interface Film extends Omit<FilmItem, 'nameRu'> {
     nameRu?: string;
     nameEn?: string;
     nameOriginal?: string;
@@ -86,13 +85,13 @@ export interface Film extends Omit<CatalogItem, 'nameRu'> {
     filmLength?: number;
     slogan?: string;
     shortDescription?: string;
-    type?: CatalogTypeTypes;
+    type?: FilmTypes;
     startYear?: number | null;
     endYear?: number | null;
     completed?: boolean;
 }
 
-export const FilmType: Record<CatalogTypeTypes, string> = CatalogTypeOptions;
+export const FilmType: Record<FilmTypes, string> = FilmTypeOptions;
 
 export interface FilmBudgetItem {
     type: string;

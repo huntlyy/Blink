@@ -1,44 +1,34 @@
-export type ListItem<T> = T[];
+//===============================================//
 
-export interface Genre {
-    genre: string;
-}
-
-export interface Country {
-    country: string;
-}
-
-export type GenresList = ListItem<Genre>;
-export type CountriesList = ListItem<Country>;
-
-export interface PaginatedResponse<T> {
-    total: number;
-    totalPages: number;
-    items: T[];
-}
-
-export interface FilmItem {
+export interface MovieCard {
+    kinopoiskId: number;
     nameRu: string;
+    nameEn: string;
     posterUrlPreview: string;
     posterUrl: string;
     ratingKinopoisk: number;
-    kinopoiskId: number;
     year: number;
     genres: GenresList;
     countries: CountriesList;
 }
 
-export type FilmList = FilmItem[];
+export type MovieList = MovieCard[];
 
-export type GetFilmListResponse = PaginatedResponse<FilmItem>;
-
-export enum FilmOrder {
-    RATING = 'RATING',
-    NUM_VOTE = 'NUM_VOTE',
-    YEAR = 'YEAR',
+export interface MovieListResponse {
+    total: number;
+    totalPage: number;
+    items: MovieList;
 }
 
-export enum FilmTypes {
+//===============================================//
+
+export enum MovieOrder {
+    RATING = 'RATING',
+    NUM_VOTE = 'NUM_VOTE',
+    YEAR = 'VOTE',
+}
+
+export enum MovieTypes {
     FILM = 'FILM',
     TV_SHOW = 'TV_SHOW',
     TV_SERIES = 'TV_SERIES',
@@ -46,25 +36,28 @@ export enum FilmTypes {
     ALL = 'ALL',
 }
 
-export const FilmOrderOptions: Record<FilmOrder, string> = {
-    [FilmOrder.NUM_VOTE]: 'Количество голосов',
-    [FilmOrder.RATING]: 'Рейтинг',
-    [FilmOrder.YEAR]: 'Год',
+export const MovieOrderOptions: Record<MovieOrder, string> = {
+    [MovieOrder.NUM_VOTE]: 'Количество голосов',
+    [MovieOrder.RATING]: 'Рейтинг',
+    [MovieOrder.YEAR]: 'Год',
 };
 
-export const FilmTypeOptions: Record<FilmTypes, string> = {
-    [FilmTypes.ALL]: 'Все',
-    [FilmTypes.FILM]: 'Фильмы',
-    [FilmTypes.TV_SERIES]: 'ТV-сериалы',
-    [FilmTypes.TV_SHOW]: 'ТV-шоу',
-    [FilmTypes.MINI_SERIES]: 'Мини-сериалы',
+export const MovieTypesOptions: Record<MovieTypes, string> = {
+    [MovieTypes.ALL]: 'Все',
+    [MovieTypes.FILM]: 'Фильмы',
+    [MovieTypes.MINI_SERIES]: 'Мини-сериалы',
+    [MovieTypes.TV_SERIES]: 'TV-сериалы',
+    [MovieTypes.TV_SHOW]: 'TV-шоу',
 };
 
-export interface FilmParams {
+export type GenresList = Record<string, string>[];
+export type CountriesList = Record<string, string>[];
+
+export interface MovieParams {
     countries?: number[];
     genres?: number[];
-    order?: FilmOrder;
-    type?: FilmTypes;
+    order?: MovieOrder;
+    type?: MovieTypes;
     ratingFrom?: number;
     ratingTo?: number;
     yearFrom?: number;
@@ -73,52 +66,78 @@ export interface FilmParams {
     page?: number;
 }
 
-export interface Film extends Omit<FilmItem, 'nameRu'> {
+export interface MovieItem {
+    kinopoiskId?: number;
     nameRu?: string;
     nameEn?: string;
     nameOriginal?: string;
+    posterUrl?: string;
     description?: string;
     ratingAgeLimits?: string;
     coverUrl?: string | null;
     logoUrl?: string | null;
+    ratingKinopoisk?: number;
     webUrl?: string;
+    year?: number;
     filmLength?: number;
     slogan?: string;
     shortDescription?: string;
-    type?: FilmTypes;
-    startYear?: number | null;
-    endYear?: number | null;
+    type?: MovieTypes;
+    genres?: GenresList;
+    countries?: CountriesList;
+    startYear?: number;
+    endYear?: number;
     completed?: boolean;
 }
 
-export const FilmType: Record<FilmTypes, string> = FilmTypeOptions;
+//===============================================//
 
-export interface FilmBudgetItem {
+export interface MovieBudget {
     type: string;
     amount: number;
     currencyCode: string;
     name: string;
     symbol: string;
 }
-export type FilmBudget = PaginatedResponse<FilmBudgetItem>;
 
-export interface FilmImageItem {
+export interface MovieBudgetItem {
+    total: number;
+    totalPages: number;
+    items: MovieBudget[];
+}
+
+//===============================================//
+
+export interface MovieImage {
     imageUrl: string;
     previewUrl: string;
 }
-export type FilmImages = PaginatedResponse<FilmImageItem>;
 
-export enum FilmFactItemType {
-    FACT = 'FACT',
-    BLOOPER = 'BLOOPER',
+export interface MovieImages {
+    total: number;
+    totalPages: number;
+    items: MovieImage[];
 }
 
-export interface FilmFactItem {
+//===============================================//
+
+export enum MovieFacts {
+    BLOOPER = 'BLOOPER',
+    FACT = 'FACT',
+}
+
+export interface MovieFact {
     text: string;
-    type: FilmFactItemType;
+    facts: MovieFacts;
     spoiler: boolean;
 }
-export type FilmFacts = PaginatedResponse<FilmFactItem>;
+
+export interface MovieFactItem {
+    total: number;
+    items: MovieFact[];
+}
+
+//===============================================//
 
 export enum TeamProfession {
     DIRECTOR = 'Режиссер',
@@ -135,19 +154,22 @@ export enum TeamProfession {
     HRONO_TITR_MALE = 'Мужской голос за кадром',
     HRONO_TITR_FEMALE = 'Женский голос за кадром',
     VOICE_MALE = 'Актер озвучки',
-    VOICE_FEMALE = 'Актриса озвучки',
+    VOICE_FEMALE = 'Акриса озвучки',
 }
 
 export interface FilmTeamItem {
     staffId: number;
     nameEn: string;
     nameRu: string;
-    description?: string | null;
+    description: null | string;
     posterUrl: string;
     professionText: string;
     professionKey: TeamProfession;
 }
+
 export type FilmTeam = FilmTeamItem[];
+
+//===============================================//
 
 export interface Spouse {
     personId: number;
@@ -160,14 +182,14 @@ export interface Spouse {
     relation: string;
 }
 
-export interface PersonFilmTypes {
+export interface PersonInMovies {
     filmId: number;
     nameRu: string;
     nameEn: string;
-    rating?: number | null;
+    rating: string | number | null;
     general: boolean;
     description: string;
-    professionKey: string;
+    professionKey: TeamProfession;
 }
 
 export interface Person {
@@ -185,7 +207,9 @@ export interface Person {
     deathplace?: string | null;
     spouses?: Spouse[];
     hasAwards?: number;
-    profession?: string;
-    facts?: string[];
-    films?: PersonFilmTypes[];
+    profession?: TeamProfession[];
+    facts?: MovieFactItem[];
+    films?: PersonInMovies[];
 }
+
+//===============================================//

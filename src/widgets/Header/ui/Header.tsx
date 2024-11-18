@@ -35,14 +35,13 @@ export const Header = memo((props: HeaderProps) => {
             )}
         >
             <div className={cls.row}>
-                <Logo />
-                {/* <Search value={inputValue} onChange={onChange} onSubmit={onSubmit}/> */}
-                <ThemeSwitcher />
                 <Burger
                     isOpen={collapsed}
                     onClick={onToggle}
                     className={cls.burger}
                 />
+                <Logo />
+                <ThemeSwitcher />
                 <HeaderProfile className={cls.profile} />
             </div>
             <Menu

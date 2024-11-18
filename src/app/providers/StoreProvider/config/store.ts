@@ -7,18 +7,12 @@ import {
 import { rtkApi } from 'shared/api/kinopoisk/rtkApi';
 import { $kinopoisk } from 'shared/api/kinopoisk/api';
 import { userReducer } from 'entities/User';
-import { WatchStatusReducer } from 'features/StatusWatch/model/slice/watchStatusSlice';
-import { moviesFilterReducer } from 'features/MoviesFilterAndSearch/model/slice/moviesFilterSlice';
-import { FilmDetailsReducer } from 'entities/Film/model/slice/FilmDetailsSlice';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         user: userReducer,
-        catalogMovies: moviesFilterReducer,
-        watchStatus: WatchStatusReducer,
-        FilmDetails: FilmDetailsReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };
 

@@ -6,12 +6,16 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { UserSchema } from 'entities/User/models/types/user';
+import { MovieCardSchema } from 'entities/Movie/model/types/MovieCardSchema';
+import { UserSchema } from 'entities/User';
+import { CatalogMoviePageSchema } from 'pages/CatalogMoviePage/model/types/CatalogMoviePageSchema';
 import { NavigateOptions, To } from 'react-router-dom';
 import { rtkApi } from 'shared/api/kinopoisk/rtkApi';
 
 export interface StateSchema {
     user: UserSchema;
+    movieCard: MovieCardSchema;
+    catalogMoviePage: CatalogMoviePageSchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     //async reducer

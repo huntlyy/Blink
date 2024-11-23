@@ -50,8 +50,16 @@ export const MovieTypesOptions: Record<MovieTypes, string> = {
     [MovieTypes.TV_SHOW]: 'TV-шоу',
 };
 
-export type GenresList = Record<string, string>[];
-export type CountriesList = Record<string, string>[];
+export interface Genre {
+    genre: string | null;
+}
+
+export interface Country {
+    country: string | null;
+}
+
+export type GenresList = Array<Genre>;
+export type CountriesList = Array<Country>;
 
 export interface MovieParams {
     countries?: number[];

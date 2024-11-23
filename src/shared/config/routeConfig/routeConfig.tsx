@@ -1,17 +1,17 @@
 import { RouteProps } from 'react-router-dom';
-import { MainPage } from 'pages/MainPage';
-import { NotFoundPage } from 'pages/NotFoundPage';
-import CatalogMoviePage from 'pages/CatalogMoviePage/ui/CatalogMoviePage';
+import MainPage from 'pages/MainPage/ui/MainPage';
+import NotFoundPage from 'pages/NotFoundPage/ui/NotFoundPage';
+import MovieDetailsPage from 'pages/MovieDetailsPage/ui/MovieDetailsPage';
 
 export enum AppRoutes {
     MAIN = 'main',
     NOT_FOUND = 'not_found',
-    MOVIE = 'movie'
+    MOVIE_DETAILS = 'movie_details',
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
-    [AppRoutes.MOVIE]: '/movie/', // + id
+    [AppRoutes.MOVIE_DETAILS]: '/movie/', // + id
 
     //последний
     [AppRoutes.NOT_FOUND]: '*',
@@ -26,8 +26,8 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
         path: RoutePath.not_found,
         element: <NotFoundPage />,
     },
-    [AppRoutes.MOVIE]: {
-        path: `${RoutePath.movie}:id`,
-        element: <CatalogMoviePage />
-    }
+    [AppRoutes.MOVIE_DETAILS]: {
+        path: `${RoutePath.movie_details}:id`,
+        element: <MovieDetailsPage />,
+    },
 };

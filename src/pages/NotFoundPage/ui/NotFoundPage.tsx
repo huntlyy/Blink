@@ -16,4 +16,4 @@ const NotFoundPage = (props: NotFoundPageProps) => {
     );
 };
 
-export default NotFoundPage;
+export default memo(NotFoundPage);

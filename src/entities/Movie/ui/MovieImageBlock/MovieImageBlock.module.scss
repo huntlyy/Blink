@@ -1,4 +1,4 @@
-.Image {
+.MovieImageBlock {
     position: relative;
     display: block;
     width: 100%;
@@ -7,13 +7,11 @@
     border-radius: var(--border-radius-size-d);
     margin-right: calc(var(--index) * 2);
     max-width: calc(var(--index) * 18.5);
-  
-    // Адаптивность: при ширине <= 1000px
+
     @media (width <= 1000px) {
       margin-right: calc(var(--index) * 1);
     }
   
-    // Адаптивность: при ширине <= 800px
     @media (width <= 800px) {
       margin-right: 0;
       margin-bottom: calc(var(--index) * 2);
@@ -21,7 +19,6 @@
       max-width: 80%;
     }
   
-    // Адаптивность: при ширине <= 450px
     @media (width <= 450px) {
       max-width: 90%;
       width: 100%;
@@ -40,7 +37,7 @@
       position: relative;
       z-index: 0;
       display: block;
-      padding-top: 145%; // Для создания соотношения сторон
+      padding-top: 145%; 
       background-color: var(--empty-color);
     }
   }

@@ -1,80 +1,67 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { memo, useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
-import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { ArticleCodeBlockComponent } from 'entities/Article/ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import { ArticleImageBlockComponent } from 'entities/Article/ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
-import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
-import cls from './ArticleDetails.module.scss';
-import {
-    getArticleDetailsData,
-    getArticleDetailsError,
-    getArticleDetailsIsLoading,
-} from '../../model/selectors/articleDetails';
-import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { MovieDetailsReducer } from "entities/Movie/model/slice/MovieDetailsSlice";
+import { ReducerList, DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { memo, useCallback, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { fetchMovieDetails } from "entities/Movie/model/services/fetchMovieById/fetchMovieById";
+import { Skeleton } from "shared/ui/Skeleton/Skeleton";
+import { Text, TextAlign, TextSize } from "shared/ui/Text/Text";
+import { classNames } from "shared/lib/classNames/classNames";
+import { MovieImageBlock } from "../MovieImageBlock/MovieImageBlock";
+import { getMovieDetailsIsLoading, getMovieDetailsData, getMovieDetailsError } from "entities/Movie/model/selectors/getMovieDetails";
+import cls from './MovieDetails.module.scss'
+import { MovieBackgroundBlock } from "../MovieBackgroundBlock/MovieBackgroundBlock";
 
-interface ArticleDetailsProps {
+interface MovieDetailsProps {
     className?: string;
     id: string;
 }
 
-const reducers: ReducersList = {
-    articleDetails: articleDetailsReducer,
+const reducers: ReducerList = {
+    movieDetails: MovieDetailsReducer
 };
 
-export const ArticleDetails = memo((props: ArticleDetailsProps) => {
+export const MovieDetails = memo((props: MovieDetailsProps) => {
     const { className, id } = props;
-    const { t } = useTranslation();
-    const dispatch = useAppDispatch();
-    const isLoading = useSelector(getArticleDetailsIsLoading);
-    const article = useSelector(getArticleDetailsData);
-    const error = useSelector(getArticleDetailsError);
 
-    const renderBlock = useCallback((block: ArticleBlock) => {
-        switch (block.type) {
-        case ArticleBlockType.CODE:
-            return (
-                <ArticleCodeBlockComponent
-                    key={block.id}
-                    block={block}
-                    className={cls.block}
-                />
-            );
-        case ArticleBlockType.IMAGE:
-            return (
-                <ArticleImageBlockComponent
-                    key={block.id}
-                    block={block}
-                    className={cls.block}
-                />
-            );
-        case ArticleBlockType.TEXT:
-            return (
-                <ArticleTextBlockComponent
-                    key={block.id}
-                    className={cls.block}
-                    block={block}
-                />
-            );
-        default:
-            return null;
-        }
-    }, []);
+    const isLoading = useSelector(getMovieDetailsIsLoading);
+    const data = useSelector(getMovieDetailsData);
+    const error = useSelector(getMovieDetailsError);
+    const dispatch = useAppDispatch();
+
+    // const renderBlock = useCallback((block: ArticleBlock) => {
+    //     switch (block.type) {
+    //     case ArticleBlockType.CODE:
+    //         return (
+    //             <ArticleCodeBlockComponent
+    //                 key={block.id}
+    //                 block={block}
+    //                 className={cls.block}
+    //             />
+    //         );
+    //     case ArticleBlockType.IMAGE:
+    //         return (
+    //             <ArticleImageBlockComponent
+    //                 key={block.id}
+    //                 block={block}
+    //                 className={cls.block}
+    //             />
+    //         );
+    //     case ArticleBlockType.TEXT:
+    //         return (
+    //             <ArticleTextBlockComponent
+    //                 key={block.id}
+    //                 className={cls.block}
+    //                 block={block}
+    //             />
+    //         );
+    //     default:
+    //         return null;
+    //     }
+    // }, []);
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleById(id));
-        }
+            dispatch(fetchMovieDetails(id));
     }, [dispatch, id]);
 
     let content;
@@ -93,35 +80,38 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         content = (
             <Text
                 align={TextAlign.CENTER}
-                title={t('Произошла ошибка при загрузке статьи.')}
+                size={TextSize.M}
+                title={'Произошла ошибка при загрузке видео.'}
             />
         );
     } else {
         content = (
             <>
-                <div className={cls.avatarWrapper}>
-                    <Avatar
-                        size={200}
-                        src={article?.img}
-                        className={cls.avatar}
+            // <MovieBackgroundBlock url={data?.webUrl}>
+                <div className={cls.imageWrapper}>
+                    <MovieImageBlock
+                    alt={`Постер для фильма ${data?.nameRu}`}
+                        src={data?.posterUrl}
+                        className={cls.image}
                     />
                 </div>
                 <Text
                     className={cls.title}
-                    title={article?.title}
-                    text={article?.subtitle}
-                    size={TextSize.L}
+                    title={data?.nameRu}
+                    text={data?.nameEn}
+                    size={TextSize.M}
                 />
-                <div className={cls.articleInfo}>
-                    <Icon className={cls.icon} Svg={EyeIcon} />
-                    <Text text={String(article?.views)} />
+                <div className={cls.MovieInfo}>
+                    <Text text={`Год: ${data?.year}`} />
+                    <Text text={`Время: ${data?.filmLength}`} />
+                    <Text text={`Слоган: ${data?.slogan}`} />
+                    <Text text={`Возраст: ${data?.ratingAgeLimits}`}/>
+                    <Text text={`Рейтинг: ${data?.ratingKinopoisk}`} />
                 </div>
-                <div className={cls.articleInfo}>
-                    <Icon className={cls.icon} Svg={CalendarIcon} />
-                    <Text text={article?.createdAt} />
-                </div>
-                {article?.blocks.map(renderBlock)}
-            </>
+                
+                {/* {article?.blocks.map(renderBlock)} */}
+            // </MovieBackgroundBlock>
+        </>
         );
     }
 

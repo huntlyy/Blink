@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { MovieDetailsSchema } from "../types/MovieDetailsSchema";
-import { fetchMovieDetails } from "../services/fetchMovieById/fetchMoviebyId";
+import { fetchMovieDetails } from "../services/fetchMovieById/fetchMovieById";
 import { Movie } from "../types/types";
 
 const initialState: MovieDetailsSchema = {
@@ -22,7 +22,7 @@ const MovieDetailsSlice = createSlice({
             state.data = action.payload
             state.isLoading = false
         })
-        .addCase(fetchMovieDetails.rejected, (state, action: PayloadAction<string>) => {
+        .addCase(fetchMovieDetails.rejected, (state, action) => {
             state.error = action.payload
             state.isLoading = false
         })

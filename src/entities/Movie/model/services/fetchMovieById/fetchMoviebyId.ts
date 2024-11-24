@@ -11,13 +11,14 @@ export const fetchMovieDetails = createAsyncThunk<
 
     try {
         const response = await extra.api.get<Movie>(
-            `v2.2/films/${kinopoiskId}`,
+            `/v2.2/films/${kinopoiskId}`,
         );
 
         if (!response.data) {
             throw new Error();
         }
 
+        console.log(response.data)
         return response.data;
     } catch (e) {
         console.log(e);

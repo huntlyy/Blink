@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './MovieImageBlock.module.scss';
+import { Image } from 'shared/ui/Image/Image';
 
 interface MovieImageBlockProps {
     className?: string;
@@ -16,10 +17,11 @@ export const MovieImageBlock = (props: MovieImageBlockProps) => {
 
     return (
         <div className={classNames(cls.MovieImageBlock, {}, [className])}>
-            <img
+            <Image
                 className={cls.img}
                 src={src}
                 alt={alt}
+
             />
         </div>
     );

@@ -31,6 +31,7 @@ export interface Movie {
     nameEn?: string;
     nameOriginal?: string;
     posterUrl?: string;
+    posterUrlPreview?: string;
     description?: string;
     ratingAgeLimits?: string;
     kinopoiskId?: number;

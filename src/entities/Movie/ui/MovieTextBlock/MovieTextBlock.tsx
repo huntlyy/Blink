@@ -9,6 +9,9 @@ interface MovieTextBlockProps {
 export const MovieTextBlock = (props: MovieTextBlockProps) => {
     const { data, className } = props;
 
+    const movieGenres = data?.genres.map((item) =>  item.genre).join(', ') || 'Неизвестно'
+    const movieCountries = data?.countries.map(item => item.country).join(', ') || 'Неизвестно'
+
     return (
         <div className={classNames('', {}, [className])}>
             <Text
@@ -16,11 +19,13 @@ export const MovieTextBlock = (props: MovieTextBlockProps) => {
                 text={data?.nameEn}
                 size={TextSize.M}
             />
-            <Text text={`Год: ${data?.year}`} />
-            <Text text={`Время: ${data?.filmLength}`} />
-            <Text text={`Слоган: ${data?.slogan}`} />
-            <Text text={`Возраст: ${data?.ratingAgeLimits}`} />
-            <Text text={`Рейтинг: ${data?.ratingKinopoisk}`} />
+            <Text text={`Год: ${data?.year || 'Неизвестно'}`} />
+            <Text text={`Страны: ${movieCountries}`} />
+            <Text text={`Жанры: ${movieGenres}`} />
+            <Text text={`Время: ${data?.filmLength || 'Не указано'}`} />
+            <Text text={`Слоган: ${data?.slogan || 'Нет слогана'}`} />
+            <Text text={`Возраст: ${data?.ratingAgeLimits || 'Не указано'}`} />
+            <Text text={`Рейтинг: ${data?.ratingKinopoisk || 'Нет рейтинга'}`} />
         </div>
     );
 };

@@ -6,7 +6,7 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { MovieDetailsSchema } from 'entities/Movie/model/types/MovieDetailsSchema';
+import { MovieDetailsSchema } from 'entities/Movie';
 import { UserSchema } from 'entities/User';
 import { NavigateOptions, To } from 'react-router-dom';
 import { rtkApi } from 'shared/api/kinopoisk/rtkApi';

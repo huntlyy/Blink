@@ -50,3 +50,14 @@ export interface Movie {
     endYear?: number | null;
     completed?: boolean;
 }
+
+export interface ItemMovie {
+    nameRu: string;
+    posterUrlPreview: string;
+    posterUrl: string;
+    ratingKinopoisk: number;
+    kinopoiskId: number;
+    year: number;
+    genres: GenresList;
+    countries: CountriesList;
+}

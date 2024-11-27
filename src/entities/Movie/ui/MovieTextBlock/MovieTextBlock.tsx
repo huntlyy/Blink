@@ -1,6 +1,7 @@
 import { Movie } from 'entities/Movie/model/types/types';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { RatingMovie } from 'shared/ui/RatingMovie/ui/RatingMovie';
 
 interface MovieTextBlockProps {
     className?: string;
@@ -24,8 +25,9 @@ export const MovieTextBlock = (props: MovieTextBlockProps) => {
             <Text text={`Жанры: ${movieGenres}`} />
             <Text text={`Время: ${data?.filmLength || 'Не указано'}`} />
             <Text text={`Слоган: ${data?.slogan || 'Нет слогана'}`} />
-            <Text text={`Возраст: ${data?.ratingAgeLimits || 'Не указано'}`} />
-            <Text text={`Рейтинг: ${data?.ratingKinopoisk || 'Нет рейтинга'}`} />
+            <Text text={`Возраст: ${data?.ratingAgeLimits && data?.ratingAgeLimits.replace('age', '+') || 'Не указано'}`} />
+            <RatingMovie rating={data?.ratingKinopoisk}/>
+            <Text text={`Тип: ${data?.type}`}/>
         </div>
     );
 };

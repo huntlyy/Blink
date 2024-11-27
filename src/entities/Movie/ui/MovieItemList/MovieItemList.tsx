@@ -2,21 +2,36 @@ import { ItemMovie } from "entities/Movie/model/types/types";
 import { memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames"
 import { MovieItem} from "../MovieItem/MovieItem";
+import { Skeleton } from "shared/ui/Skeleton/Skeleton";
+import { ErrorPage } from "widgets/ErrorPage";
 
 interface MovieItemListProps {
     className?: string
     data?: ItemMovie[]
     isLoading?: boolean;
-    error?: string
 }
 
+
+let getSkeletons = () => {
+    return <div>
+        <Skeleton height={100} width={100}/>
+            <Skeleton height={100} width={100}/>
+            <Skeleton height={100} width={100}/>
+            <Skeleton height={100} width={100}/>
+            <Skeleton height={100} width={100}/>
+    </div>
+}
 const renderMovie = (movie: ItemMovie) => {
     return <MovieItem data={movie} />
 }
 
 export const MovieItemList = memo((props: MovieItemListProps) => {
 
-    const {data, className, error, isLoading} = props
+    const {data, className, isLoading} = props
+
+    if (isLoading) {
+            return getSkeletons()
+    } 
 
 
     return <div className={classNames('', {}, [className])}>

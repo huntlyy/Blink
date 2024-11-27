@@ -8,12 +8,14 @@ import {
 import { AxiosInstance } from 'axios';
 import { MovieDetailsSchema } from 'entities/Movie';
 import { UserSchema } from 'entities/User';
+import { MainPageSchema } from 'pages/MainPage';
 import { NavigateOptions, To } from 'react-router-dom';
 import { rtkApi } from 'shared/api/kinopoisk/rtkApi';
 
 export interface StateSchema {
     user: UserSchema;
     movieDetails: MovieDetailsSchema;
+    movieCatalog: MainPageSchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     //async reducer

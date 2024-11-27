@@ -1,14 +1,11 @@
-import { ReactNode } from 'react';
-import { Mods, classNames } from 'shared/lib/classNames/classNames';
-import { AppLink } from '../AppLink/AppLink';
+import { HTMLAttributes, ReactNode } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
-interface CardProps {
+interface CardProps extends HTMLAttributes<HTMLDivElement>{
     className?: string;
     alt: string;
     src: string;
-    to: string;
-    withOverflow: boolean;
     heightSize?: number;
     children?: ReactNode;
 }
@@ -17,21 +14,15 @@ export const Card = (props: CardProps) => {
     const {
         alt = 'Image',
         src = '',
-        to,
-        withOverflow = false,
         children,
         className,
         heightSize = 160,
+        ...otherProps
     } = props;
 
-    const mods: Mods = {
-        [cls.overflow]: withOverflow,
-    };
-
     return (
-        <AppLink
-            to={to}
-            className={classNames(cls.Card, mods, [className])}
+        <div
+            className={classNames(cls.Card, {}, [className])} {...otherProps}
         >
             <div
                 className={cls.wrapper_image}
@@ -42,8 +33,8 @@ export const Card = (props: CardProps) => {
                     src={src}
                     alt={alt}
                 />{' '}
-                {children && children}
+                {children}
             </div>
-        </AppLink>
+        </div>
     );
 };

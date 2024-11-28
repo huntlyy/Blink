@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
-interface CardProps extends HTMLAttributes<HTMLDivElement>{
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     alt: string;
     src: string;
@@ -22,7 +22,8 @@ export const Card = (props: CardProps) => {
 
     return (
         <div
-            className={classNames(cls.Card, {}, [className])} {...otherProps}
+            className={classNames(cls.Card, {}, [className])}
+            {...otherProps}
         >
             <div
                 className={cls.wrapper_image}

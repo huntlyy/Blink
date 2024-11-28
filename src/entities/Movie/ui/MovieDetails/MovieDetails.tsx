@@ -15,10 +15,10 @@ import {
     getMovieDetailsData,
     getMovieDetailsError,
 } from 'entities/Movie/model/selectors/getMovieDetails';
-import cls from './MovieDetails.module.scss';
 import { MovieBackgroundBlock } from '../MovieBackgroundBlock/MovieBackgroundBlock';
 import { MovieImageBlock } from '../MovieImageBlock/MovieImageBlock';
 import { MovieTextBlock } from '../MovieTextBlock/MovieTextBlock';
+import cls from './MovieDetails.module.scss';
 
 interface MovieDetailsProps {
     className?: string;
@@ -83,11 +83,11 @@ export const MovieDetails = memo(({ className, id }: MovieDetailsProps) => {
         content = (
             <MovieBackgroundBlock url={data?.coverUrl}>
                 <div className={cls.content}>
-                <MovieImageBlock
-                    src={data?.posterUrl}
-                    alt={data?.nameOriginal}
-                />
-                <MovieTextBlock data={data} />
+                    <MovieImageBlock
+                        src={data?.posterUrl}
+                        alt={data?.nameOriginal}
+                    />
+                    <MovieTextBlock data={data} />
                 </div>
             </MovieBackgroundBlock>
         );

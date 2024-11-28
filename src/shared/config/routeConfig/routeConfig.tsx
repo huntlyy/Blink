@@ -3,6 +3,10 @@ import MainPage from 'pages/MainPage/ui/MainPage';
 import NotFoundPage from 'pages/NotFoundPage/ui/NotFoundPage';
 import MovieDetailsPage from 'pages/MovieDetailsPage/ui/MovieDetailsPage';
 
+export type AppRoutesProps = RouteProps & {
+    authOnly?: boolean;
+};
+
 export enum AppRoutes {
     MAIN = 'main',
     NOT_FOUND = 'not_found',

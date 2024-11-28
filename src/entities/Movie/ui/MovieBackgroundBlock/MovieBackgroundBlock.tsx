@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './MovieBackgroundBlock.module.scss';
 import { ReactNode } from 'react';
+import cls from './MovieBackgroundBlock.module.scss';
 
 interface MovieBackgroundBlockProps {
     className?: string;

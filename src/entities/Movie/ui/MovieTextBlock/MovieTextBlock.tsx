@@ -10,8 +10,10 @@ interface MovieTextBlockProps {
 export const MovieTextBlock = (props: MovieTextBlockProps) => {
     const { data, className } = props;
 
-    const movieGenres = data?.genres.map((item) =>  item.genre).join(', ') || 'Неизвестно'
-    const movieCountries = data?.countries.map(item => item.country).join(', ') || 'Неизвестно'
+    const movieGenres =
+        data?.genres.map((item) => item.genre).join(', ') || 'Неизвестно';
+    const movieCountries =
+        data?.countries.map((item) => item.country).join(', ') || 'Неизвестно';
 
     return (
         <div className={classNames('', {}, [className])}>
@@ -25,9 +27,11 @@ export const MovieTextBlock = (props: MovieTextBlockProps) => {
             <Text text={`Жанры: ${movieGenres}`} />
             <Text text={`Время: ${data?.filmLength || 'Не указано'}`} />
             <Text text={`Слоган: ${data?.slogan || 'Нет слогана'}`} />
-            <Text text={`Возраст: ${data?.ratingAgeLimits && data?.ratingAgeLimits.replace('age', '+') || 'Не указано'}`} />
-            <RatingMovie rating={data?.ratingKinopoisk}/>
-            <Text text={`Тип: ${data?.type}`}/>
+            <Text
+                text={`Возраст: ${(data?.ratingAgeLimits && data?.ratingAgeLimits.replace('age', '+')) || 'Не указано'}`}
+            />
+            <RatingMovie rating={data?.ratingKinopoisk} />
+            <Text text={`Тип: ${data?.type}`} />
         </div>
     );
 };

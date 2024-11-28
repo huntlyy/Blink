@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Movie } from '../../types/types';
 import { ThunkConfig } from 'app/providers/StoreProvider';
+import { Movie } from '../../types/types';
 
 export const fetchMovieDetails = createAsyncThunk<
     Movie,

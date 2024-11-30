@@ -15,7 +15,7 @@ export enum AppRoutes {
 
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
-    [AppRoutes.MOVIE_DETAILS]: '/movie/', // + id
+    [AppRoutes.MOVIE_DETAILS]: '/movie/', // + id movie
 
     //последний
     [AppRoutes.NOT_FOUND]: '*',

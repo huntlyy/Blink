@@ -13,7 +13,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export const Card = (props: CardProps) => {
     const {
         alt = 'Image',
-        src = '',
+        src,
         children,
         className,
         heightSize = 160,

@@ -1,5 +1,4 @@
-import { ItemMovie } from 'entities/Movie';
-import { Suspense, memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import {
     DynamicModuleLoader,
     ReducerList,
@@ -8,13 +7,14 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { MovieItemList } from 'entities/Movie/ui/MovieItemList/MovieItemList';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
-import { fetchMovies } from '../model/services/fetchMovies';
+import { fetchMovies } from '../model/services/fetchMovies/fetchMovies';
 import {
-    getMainPageError,
     getMainPageIsLoading,
+    getMainPageNum,
 } from '../model/selectors/getMainPage';
 import { getMovies, mainPageReducer } from '../model/slice/MainPageSlice';
+import { Page } from 'shared/ui/Page/Page';
+import { fetchNextMoviesPage } from '../model/services/fetchNextMoviesPage/fetchNextMoviesPage';
 
 interface MainPageProps {
     className?: string;
@@ -28,13 +28,16 @@ const MainPage = (props: MainPageProps) => {
     const { className } = props;
     const data = useSelector(getMovies.selectAll);
     const isLoading = useSelector(getMainPageIsLoading);
-
     const dispatch = useAppDispatch();
+
+    const onLoadNextPage = useCallback(() => {
+       dispatch(fetchNextMoviesPage())
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(
             fetchMovies({
-                page: 3,
+                page: 1,
             }),
         );
     }, [dispatch]);
@@ -44,14 +47,12 @@ const MainPage = (props: MainPageProps) => {
             removeAfterUnmount
             reducers={reducers}
         >
-            <div className={classNames('', {}, [className])}>
-                <Suspense fallback={<PageLoader />}>
+            <Page onScrollEnd={onLoadNextPage} className={classNames('', {}, [className])}>
                     <MovieItemList
                         data={data}
                         isLoading={isLoading}
                     />
-                </Suspense>
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

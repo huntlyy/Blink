@@ -41,14 +41,12 @@ const getSkeletons = () => {
 export const MovieItemList = memo((props: MovieItemListProps) => {
     const { data, className, isLoading } = props;
 
-    const renderMovie = (data: ItemMovie) => {
-        return (
-            <MovieItem
-                key={data.kinopoiskId}
-                data={data}
-            />
-        );
-    };
+    const renderMovie = (data: ItemMovie, index: number) => (
+        <MovieItem
+            key={data.kinopoiskId || index}
+            data={data}
+        />
+    )
 
     return (
         <div className={classNames('', {}, [className])}>

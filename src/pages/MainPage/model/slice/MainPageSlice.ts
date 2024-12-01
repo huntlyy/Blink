@@ -1,27 +1,27 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
 import { ItemMovie } from 'entities/Movie';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { MainPageSchema } from '../types/MainPageSchema';
-import { fetchMovies } from '../services/fetchMovies';
+import { fetchMovies } from '../services/fetchMovies/fetchMovies';
+import { StateSchema } from 'app/providers/StoreProvider';
 
-const movieAdapter = createEntityAdapter<ItemMovie>({
-    selectId: (movie) => movie.kinopoiskId,
-});
+const moviesAdapter = createEntityAdapter<ItemMovie>({
+    selectId: (movie) => movie.kinopoiskId || `${movie.nameRu}_${movie.year}`
+})
 
-export const getMovies = movieAdapter.getSelectors<StateSchema>(
-    (state) => state.movieCatalog || movieAdapter.getInitialState(),
+export const getMovies = moviesAdapter.getSelectors<StateSchema>(
+    (state) => state.movieCatalog || moviesAdapter.getInitialState(),
 );
 
 const mainPageSlice = createSlice({
     name: 'moviePageSlice',
-    initialState: movieAdapter.getInitialState<MainPageSchema>({
+    initialState: moviesAdapter.getInitialState<MainPageSchema>({
         isLoading: false,
         error: undefined,
-        page: 1,
-        hasMore: true,
         ids: [],
         entities: {},
+        page: 1,
+        hasMore: true,
     }),
     reducers: {
         setPage: (state, action: PayloadAction<number>) => {
@@ -38,7 +38,8 @@ const mainPageSlice = createSlice({
                 fetchMovies.fulfilled,
                 (state, action: PayloadAction<ItemMovie[]>) => {
                     state.isLoading = false;
-                    movieAdapter.setAll(state, action.payload);
+                    moviesAdapter.addMany(state, action.payload)
+                    state.hasMore = action.payload.length > 0;
                 },
             )
             .addCase(

@@ -34,7 +34,7 @@ export interface Movie {
     posterUrlPreview?: string;
     description?: string;
     ratingAgeLimits?: string;
-    kinopoiskId?: number;
+    kinopoiskId?: number | string;
     coverUrl?: string | null;
     logoUrl?: string | null;
     ratingKinopoisk?: number;
@@ -56,7 +56,7 @@ export interface ItemMovie {
     posterUrlPreview: string;
     posterUrl: string;
     ratingKinopoisk: number;
-    kinopoiskId: number;
+    kinopoiskId: number | string;
     year: number;
     genres: GenresList;
     countries: CountriesList;

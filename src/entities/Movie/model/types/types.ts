@@ -53,6 +53,8 @@ export interface Movie {
 
 export interface ItemMovie {
     nameRu: string;
+    nameEn: string;
+    nameOriginal: string;
     posterUrlPreview: string;
     posterUrl: string;
     ratingKinopoisk: number;

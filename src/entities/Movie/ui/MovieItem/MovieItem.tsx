@@ -17,11 +17,12 @@ export const MovieItem = memo((props: MovieItemProps) => {
     const navigate = useNavigate();
 
     const onOpenMovie = useCallback(() => {
-        navigate(RoutePath.main + data?.kinopoiskId);
+        navigate(RoutePath.main + data.kinopoiskId);
     }, [navigate, data.kinopoiskId]);
 
     return (
-        <Card
+        <div className={classNames('', {}, [className])}>
+             <Card
             onClick={onOpenMovie}
             src={data?.posterUrlPreview}
             alt={data?.nameRu}
@@ -31,5 +32,6 @@ export const MovieItem = memo((props: MovieItemProps) => {
             <Text title={data?.nameRu} />
             <Text text={data?.year} />
         </Card>
+        </div>
     );
 });

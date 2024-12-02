@@ -7,39 +7,41 @@ import { GridList } from 'shared/ui/GridList/GridList';
 
 interface MovieItemListProps {
     className?: string;
-    data?: ItemMovie[];
+    data: ItemMovie[];
     isLoading?: boolean;
 }
 
-const getSkeletons = () => {
-    return (
-        <div>
-            <Skeleton
-                height={100}
-                width={100}
-            />
-            <Skeleton
-                height={100}
-                width={100}
-            />
-            <Skeleton
-                height={100}
-                width={100}
-            />
-            <Skeleton
-                height={100}
-                width={100}
-            />
-            <Skeleton
-                height={100}
-                width={100}
-            />
-        </div>
-    );
-};
-
 export const MovieItemList = memo((props: MovieItemListProps) => {
     const { data, className, isLoading } = props;
+
+    if (isLoading) {
+       return <div>
+        <Skeleton
+            height={400}
+            width={256}
+        />
+        <Skeleton
+            height={400}
+            width={256}
+        />
+        <Skeleton
+            height={400}
+            width={256}
+        />
+        <Skeleton
+            height={400}
+            width={256}
+        />
+        <Skeleton
+            height={400}
+            width={256}
+        />
+        <Skeleton
+            height={400}
+            width={256}
+        />
+    </div>
+    }
 
     const renderMovie = (data: ItemMovie, index: number) => (
         <MovieItem
@@ -50,10 +52,7 @@ export const MovieItemList = memo((props: MovieItemListProps) => {
 
     return (
         <div className={classNames('', {}, [className])}>
-            <GridList>
             {data.length > 0 ? data.map(renderMovie) : null}
-            {isLoading && getSkeletons()}
-            </GridList>
         </div>
     );
 });

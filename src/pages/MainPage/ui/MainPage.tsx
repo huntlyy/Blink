@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 import { fetchMovies } from '../model/services/fetchMovies/fetchMovies';
 import {
     getMainPageIsLoading,
-    getMainPageNum,
 } from '../model/selectors/getMainPage';
 import { getMovies, mainPageReducer } from '../model/slice/MainPageSlice';
 import { Page } from 'shared/ui/Page/Page';
@@ -37,14 +36,14 @@ const MainPage = (props: MainPageProps) => {
     useEffect(() => {
         dispatch(
             fetchMovies({
-                page: 1,
+                page: 1
             }),
         );
     }, [dispatch]);
 
     return (
         <DynamicModuleLoader
-            removeAfterUnmount
+            removeAfterUnmount={false}
             reducers={reducers}
         >
             <Page onScrollEnd={onLoadNextPage} className={classNames('', {}, [className])}>

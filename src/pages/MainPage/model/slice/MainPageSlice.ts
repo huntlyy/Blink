@@ -6,7 +6,7 @@ import { fetchMovies } from '../services/fetchMovies/fetchMovies';
 import { StateSchema } from 'app/providers/StoreProvider';
 
 const moviesAdapter = createEntityAdapter<ItemMovie>({
-    selectId: (movie) => movie.kinopoiskId || `${movie.nameRu}_${movie.year}`
+    selectId: (movie) => movie.kinopoiskId || `${movie.year}_${movie.nameEn}`,
 })
 
 export const getMovies = moviesAdapter.getSelectors<StateSchema>(

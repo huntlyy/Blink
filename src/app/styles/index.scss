@@ -1,0 +1,47 @@
+@import './reset';
+@import './themes/dark';
+@import './themes/light';
+@import './variables/global';
+
+// global
+*{
+  // scroll
+  // custom scroll
+  &::-webkit-scrollbar {
+    width: var(--scroll-size);
+    height: var(--scroll-size);
+    
+    // bg
+    &-track{
+      background-color: var(--bg-color);
+    }
+
+    &-thumb{
+      background-color: var(--primary-color);
+      border-radius: var(--scroll-border-radius);
+      transition: all var(--transition-duration);
+
+      &:hover{
+        background-color:var(--secondary-color);
+      }
+    }
+  }
+}
+
+html,body{
+  height: 100%;
+}
+
+body{
+  font: var(--font-m);
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+.container{
+  margin: 0 var(--container-margin);
+}
+
+.main{
+  padding-top: var(--header-height);
+}

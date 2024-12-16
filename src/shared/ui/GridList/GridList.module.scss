@@ -1,0 +1,26 @@
+.GridList{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: var(--index);
+  
+    @media(width <= 1000px){
+      grid-template-columns: repeat(4, 1fr);
+    }
+  
+    @media(width <= 800px){
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    @media(width <= 600px){
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    @media(width <= 400px){
+      grid-gap:  calc(var(--index) * 0.8) calc(var(--index) * 0.5);
+    }
+  
+    @media(width <= 300px){
+      grid-gap: calc(var(--index) * 1.2);
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }

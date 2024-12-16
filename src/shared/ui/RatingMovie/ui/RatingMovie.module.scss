@@ -1,0 +1,24 @@
+.RatingMovie{
+    font-size: 0.9em;
+    line-height: 90%;
+  
+    padding: 0.4em 0.6em;
+    border-radius: var(--btn-border-radius);
+    background-color: var(--empty-color);
+  
+    &.great{
+      background-color: var(--great-color);
+    }
+  
+    &.medium{
+      background-color: var(--medium-color);
+    }
+  
+    &.bad{
+      background-color: var(--bad-color);
+    }
+  
+    &.empty{
+      background-color: var(--empty-color);
+    }
+  }

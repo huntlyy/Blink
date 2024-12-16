@@ -1,0 +1,67 @@
+.Button {
+    --border-width: 0.1em;
+  
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    font: var(--font-m);
+    color: var(--text-color);
+  }
+  
+  .clear {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .classic {
+    border-radius: var(--btn-border-radius);
+    padding: var(--btn-padding-m);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    transition-property: color background-color transform border-color;
+    transition-duration: var(--transition-duration);
+    border: var(--border-width) solid var(--primary-color);
+  
+    &:hover{
+      border-color: var(--text-color);
+      color: var(--primary-color);
+      background-color: var(--text-color);
+  
+      svg{
+        stroke: var(--primary-color);
+      }
+    }
+  }
+
+  .gray {
+    margin: 0;
+    background-color: var(--glass-bg-color);
+    border-radius: var(--btn-border-radius-circle);
+    padding: var(--btn-padding-l);
+    border: none;
+  }
+  
+  .outline{
+    border: var(--border-width) solid var(--primary-color);
+    border-radius: var(--btn-border-radius);
+    padding: var(--btn-padding);
+    color: var(--primary-color);
+    background-color: transparent;
+    transition-property: background-color color border-color;
+    transition-duration: var(--transition-duration);
+  
+    &:hover{
+      color: var(--text-color);
+      border-color: var(--text-color);
+    }
+  }
+  
+  // mods
+  .centered{
+    display: block;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+  }

@@ -52,7 +52,9 @@ export const MovieItemList = memo((props: MovieItemListProps) => {
 
     return (
         <div className={classNames('', {}, [className])}>
+            <GridList>
             {data.length > 0 ? data.map(renderMovie) : null}
+            </GridList>
         </div>
     );
 });

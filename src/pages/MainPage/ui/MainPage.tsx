@@ -14,6 +14,7 @@ import {
 } from '../model/selectors/getMainPage';
 import { getMovies, mainPageReducer } from '../model/slice/MainPageSlice';
 import { fetchNextMoviesPage } from '../model/services/fetchNextMoviesPage/fetchNextMoviesPage';
+import cls from './MainPage.module.scss'
 
 interface MainPageProps {
     className?: string;
@@ -25,7 +26,7 @@ const reducers: ReducerList = {
 
 const MainPage = (props: MainPageProps) => {
     const { className } = props;
-const data = Object.values(useSelector(getMovies.selectEntities));
+    const data = Object.values(useSelector(getMovies.selectEntities));
     const isLoading = useSelector(getMainPageIsLoading);
     const dispatch = useAppDispatch();
 
@@ -46,10 +47,11 @@ const data = Object.values(useSelector(getMovies.selectEntities));
             removeAfterUnmount
             reducers={reducers}
         >
-            <Page onScrollEnd={onLoadNextPage} className={classNames('', {}, [className])}>
+            <Page onScrollEnd={onLoadNextPage} className={classNames(cls.MainPage, {}, [className])}>
                     <MovieItemList
                         data={data}
                         isLoading={isLoading}
+                        className={cls.ItemsList}
                     />
             </Page>
         </DynamicModuleLoader>

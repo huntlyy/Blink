@@ -1,0 +1,146 @@
+
+.MovieItem{
+    --padding: 0.75em;
+  
+    outline: 0.15em solid var(--bg-color);
+    position: relative;
+    z-index: 0;
+  
+    transition-property: transform outline;
+    transition-duration: var(--transition-duration);
+    
+    &:hover, &:focus-visible, &:focus {
+      transform: scale(1.03);
+      outline-color: var(--primary-color);
+  
+      .info{
+        opacity: 1;
+        transform: translateY(0%);
+      }
+  
+      .rating{
+        opacity: 1;
+        transform: translate(0,0);
+      }
+  
+  
+      .img{
+        transform: scale(1.1);
+      }
+    }
+  
+  
+    @media(width <= 800px){
+      --padding: 0.5em;
+      
+      outline-width: 0.1em;
+      
+      &:hover, &:focus-visible, &:focus{
+        transform: scale(1.01);
+      }
+    }
+  
+    @media(width <= 400px){
+      --padding: 0.3em;
+          
+      &:hover, &:focus-visible, &:focus{
+        transform: scale(1);
+      }
+    }
+  
+    @media(width <= 300px){
+      --padding: 0.7em;
+    }
+  }
+  
+  .tagList{
+    font-size: 70%;
+  }
+  
+  .rating{
+    position: absolute;
+    z-index: 2;
+    top: var(--padding);
+    left: var(--padding);
+  
+    opacity: 0;
+    transform: translate(-50%,-50%);
+  
+    transition-property: opacity, transform;
+    transition-duration: var(--transition-duration);
+  }
+  
+  .info{
+    position: absolute;
+    bottom: var(--padding);
+    left: var(--padding);
+    right: var(--padding);
+    z-index: 2;
+  
+    opacity: 0;
+    transform: translateY(50%);
+  
+    transition-property: opacity, transform;
+    transition-duration: var(--transition-duration);
+  }
+  
+  .name{
+    font-size: 1.1em;
+    line-height: 105%;
+    margin-bottom: 0.2em;
+  }
+  
+  .year{
+    font-size: 0.8em;
+    line-height: 100%;
+    
+    opacity: 0.6;
+  }
+  
+  @media(width <= 1000px){
+    .year{
+      font-size: 0.9em;
+    }
+  
+    .name{
+      font-size: 1.2em;
+    }
+  
+    .tagList{
+      font-size: 75%;
+    }
+  }
+  
+  
+  @media(width <= 400px){
+    .year{
+      font-size: 0.8em;
+    }
+  
+    .name{
+      font-size: 1em;
+    }
+  
+    .tagList{
+      font-size: 65%;
+    }
+  }
+  
+  @media(width <= 300px){
+    .year{
+      font-size: 1.3em;
+    }
+  
+    .name{
+      font-size: 2em;
+    }
+  
+    .tagList{
+      font-size: 95%;
+    }
+  
+    .rating{
+      font-size: 1.3em;
+    }
+  }
+  
